@@ -1,0 +1,284 @@
+.header div.x-panel-body{background:url(../images/header-bg.gif) repeat-x transparent !important;}
+
+.document_icon {background-image: url("../images/generarDoc.png") !important;}
+.upload_icon {background-image: url("../images/upload.png") !important;}
+.doc_icon {background-image: url("../images/page_word.png") !important;}
+.xls_icon {background-image: url("../images/page_excel.png") !important;}
+.pdf_icon {background-image: url("../images/page_pdf.png") !important;}
+.file_icon {background-image: url("../images/page_file.png") !important;}
+.img_icon {background-image: url("../images/images.png") !important;}
+
+.doc_icon_64 {background-image: url("../images/page_word_64.png") !important; background-repeat: no-repeat;}
+.xls_icon_64 {background-image: url("../images/page_excel_64.png") !important; background-repeat: no-repeat;}
+.pdf_icon_64 {background-image: url("../images/page_pdf_64.png") !important; background-repeat: no-repeat;}
+
+.trigger-calculator, .trigger-calculator-over {
+	background-image: url("../images/calculator.png") !important;
+	background-repeat: no-repeat;
+	border: none;
+	background-position: 0px 3px !important;
+}
+
+.tables_icon {background-image: url("../images/tables.png") !important;}
+.factura_icon {background-image: url("../images/tables.png") !important;}
+.verification_icon {background-image: url("../images/verification.png") !important;}
+.desist_icon {background-image: url("../images/desist.png") !important;}
+.comments_icon {background-image: url("../images/comments.png") !important;}
+.evaluate_icon {background-image: url("../images/table_gear.png") !important;}
+.calculator_icon {background-image: url("../images/calculator.png") !important; background-repeat: no-repeat;}
+.cancel_icon {background-image: url("../images/cancel.png") !important;}
+.add_icon {background-image: url("../images/add.png") !important;}
+.open_icon {background-image: url("../images/open.png") !important;}
+.send_icon {background-image: url("../images/send.png") !important;}
+.denied_icon {background-image: url("../images/denied.png") !important;}
+.find_icon {background-image: url("../images/find.png") !important;}
+.back_icon {background-image: url("../images/back.png") !important;}
+.print_icon {background-image: url("../images/print.png") !important;}
+.edit_icon {background-image: url("../images/edit.png") !important;}
+.images_icon {background-image: url("../images/images.png") !important;}
+.refresh_icon {background-image: url("../images/refresh.png") !important;}
+.save_icon {background-image: url("../images/save.png") !important;}
+.create_folder_icon {background-image: url("../images/folder_add.png") !important;}
+.reference_icon {background-image: url("../images/reference.png") !important;}
+.work_icon {background-image: url("../images/work.png") !important;}
+.coins_icon{background-image: url("../images/coins_icon.png") !important;}
+.etapa_label {font-size: 24px;font-family: arial;color:#676767;height:35px;text-align: right;width:500px}
+.ctg_label {font-size: 18px;font-family: arial;color:#676767;text-align: right;padding-right:10px;width:500px}
+.action_icons {margin-right: 5px; cursor: pointer;}
+.duplicate_icon {background-image: url("../images/duplicate.png") !important;}
+.phone_icon {background-image: url("../images/phone.png") !important;}
+.user_gray {background-image: url("../images/user_gray.png") !important;}
+.chart_organisation {background-image: url("../images/chart_organisation.png") !important;}
+.shield {background-image: url("../images/shield.png") !important;}
+.firm_icon {background-image: url("../images/firm_icon.png") !important;}
+.calculator {background-image: url("../images/calculator.png") !important;}
+.reference {background-image: url("../images/reference.png") !important;}
+.verification {background-image: url("../images/verification.png") !important;}
+.table_gear {background-image: url("../images/table_gear.png") !important;}
+.asignar {background-image: url("../images/asignar.png") !important;}
+.phone {background-image: url("../images/phone.png") !important;}
+.list {background-image: url("../images/list.png") !important;}
+
+
+.label_spacing{padding: 5px 0 1px 0; margin: 0 !important; font-weight: bold; font-size: 11px;}
+.label_spacing_parametros{
+	padding: 3 0 1px 0;
+	margin-top: 0px !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	margin-bottom: 0 !important;
+	font-weight: bold;
+	font-size: 11px;
+}
+.label_spacing_text{padding: 0px 0 1px 0; margin: 0 !important; font-size: 11px;}
+.label_note{padding: 0px 0 5px 0; margin: 0 !important; font-size: 10px;}
+.label_header{
+	margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 2px 0 2px 0;
+    text-align: center;
+     background: url("../images/marcoSupCen.png") repeat-x scroll 0 -2px #DEDEDE;
+    border: 1px solid #AAAAAA;
+    color: #222222;
+    font-weight: bold;
+    font-size: 11px;
+    -moz-border-radius: 3px 3px 3px 3px;
+}
+
+input, textarea{
+	text-transform: uppercase !important;
+}
+
+.numberfield{
+	text-align: right !important;
+}
+.x-form-trigger-search{
+	background-image:url('../js/extjs-4.0.1/resources/themes/images/default/form/search-trigger.gif');
+}
+
+.read_only{
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)" !important;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60) !important;
+	opacity:0.6 !important;
+}
+
+.tdTitleL{width:13px;height:48px;background:url(../images/titleIzq.png) no-repeat;}
+.tdTitle{margin:auto;height:48px;background:url(../images/title.png) repeat-x;}
+.tdTitleR{width:14px;height:48px;background:url(../images/titleDer.png) no-repeat;}
+.marcoSupIzq{width:11px;height:11px;background:url(../images/marcoSupIzq.png ) no-repeat;}
+.marcoSupCen{margin:auto;height:11px;background:url(../images/marcoSupCen.png ) repeat-x;}
+.marcoSupDer{width:14px;height:11px;background:url(../images/marcoSupDer.png ) no-repeat;}
+.marcoIzq{width:11px;background:url(../images/marcoIzq.png ) repeat-y;}
+.marco{background:url(../images/marco.png ) repeat;}
+.marcoDer{width:15px;background:url(../images/marcoDer.png ) repeat-y;}
+.marcoInfIzq{width:15px;height:15px;background:url(../images/marcoInfIzq.png ) no-repeat;}
+.marcoInfCen{margin:auto;height:15px;background:url(../images/marcoInfCen.png ) repeat-x;}
+.marcoInfDer{width:15px;height:15px;background:url(../images/marcoInfDer.png ) no-repeat;}
+.lblHeader {
+    background: url("../images/marcoSupCen.png") repeat-x scroll 0 -2px #DEDEDE;
+    border: 1px solid #AAAAAA;
+    border-radius: 3px 3px 3px 3px;
+    color: #222222;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    padding: 2px 0;
+    text-align: center;
+    width: 730px
+}
+
+.lblHeaderRed{
+	color: darkred;
+}
+.TABLE{width: 100%;display: table;}
+.TABLE .TR{clear: both;width: 100%;display: table;}
+.TABLE .TR .TD{font-size: 11px;margin: 0 !important;float:left;}
+.TABLE .TR .colNom {font-weight: bold;padding: 5px 0 1px;}
+.TABLE .TR .colValor {padding: 5px 0 1px;}
+.TABLE .TR .data {padding: 0 0 1px; text-transform: uppercase;}
+
+.ch{
+	background:url(../images/closeHome.png) 0 0 no-repeat;
+	width: 26px;
+	height:25px;
+	float:right;
+	display: block;
+	margin-left: 5px;
+	margin-top: 8px
+}
+.inicio{background-position: 0 0;}
+.inicio:hover{background-position: -26px 0;}
+.cerrar{background-position: -52px 0;}
+.cerrar:hover{background-position: -78px 0;}
+.clave{background-position: -104px 0;}
+.clave:hover{background-position: -130px 0;}
+.separador{width: 100%;height:20px;margin-top: -8px; clear: both;}
+
+/*File Upload*/
+.x-form-file-wrap .x-form-file-input {
+    font-size: 100px;
+    height: 30px;
+    opacity: 0;
+    position: absolute;
+    right: -2px;
+    top: -4px;
+    filter: alpha(opacity=0);
+}
+.thumb-wrap{
+	float: left;
+	padding: 20px;
+}
+.tableCT{
+    background: url("../images/marcoSupCen.png") repeat-x scroll 0 1px #F1F1F1;
+    border: 1px solid #dadada;
+    border-top:none;
+    border-radius: 5px 5px 5px 5px;
+    color: #676767;
+    display: block;
+    float: left;
+    width: 962px;
+    height: 75px;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+.img{width:4%;height:100%;background: #F7F7F7;border-radius: 5px 5px 5px 5px;}
+.tableCT div, .tableCT label{float: left;}
+.rowCT{width: 95%;padding-top: 4px}
+.c1CT div, .c2CT div, .c3CT div{font-weight: bold;}
+.c1CT{width: 300px}
+.c2CT{width: 300px}
+.c3CT{width: 310px}
+.e1CT{width: 100px}
+.e2CT{width: 100px}
+.e3CT{width: 120px}
+.ct{
+	width:35px;
+	margin-left:2px;
+	margin-top:5px;
+	height:100%;
+	background: url('../images/controlTiempo.png') no-repeat scroll 0 0 transparent;
+}
+.remision{
+	background-position: 0px 0px;
+}
+.devolucion{
+	background-position: -35px 0px;
+}
+#divControlTiempo{
+	width:988px;
+	height:537px;
+	float: left;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+.bbar{
+	float:left;
+	width: 100%;
+	height: 25px;
+	/*border-radius: 5px 5px 5px 5px;*/
+	background: url('../images/marcoSupCen.png') repeat-x scroll 0 1px #e0e0e0;
+}
+.bateria{
+	background: url('../images/bateries.png') no-repeat scroll 0 0 transparent;
+	width: 59px;
+	height: 18px;
+	margin: auto;
+}
+.incompleta{
+	background: url('../images/no_accept.png') no-repeat scroll 0 0 transparent;
+	width: 24px;
+	height: 16px;
+	margin: auto;
+	cursor: pointer;
+}
+.campoAP{min-width: 90px;font-weight: bold;margin-left: 10px}
+.labelAP{margin-left: 5px;width: 85%}
+
+.number-field, .number-field input{text-align: right !important;}
+.overflow_cls:first-child{overflow-y: auto; overflow-x: hidden !important;}
+
+.x-box-scroller-right .after-scroller-ui-right {
+	width: 14px;
+	height: 77px;
+	border-bottom: 1px solid #8DB2E3;
+	position: relative;
+	cursor: pointer;
+}
+
+.x-box-scroller-right .after-scroller-ui-right {
+	background: url(../images/button_right.png) no-repeat;
+}
+
+.x-box-scroller-right .after-scroller-ui-right-hover{
+	background: url(../images/button_right.png) no-repeat 0px -60px !important;
+}
+
+.x-box-scroller-right .after-scroller-ui-right-disabled{
+	background: url(../images/button_right.png) no-repeat 0px -120px !important;
+	cursor: auto;
+}
+
+.x-box-scroller-left .before-scroller-ui-left {
+	width: 14px;
+	height: 77px;
+	border-bottom: 1px solid #8DB2E3;
+	cursor: pointer;
+}
+
+.x-box-scroller-left .before-scroller-ui-left {
+	background: url(../images/button_left.png) no-repeat;
+}
+
+.x-box-scroller-left .before-scroller-ui-left-hover{
+	background: url(../images/button_left.png) no-repeat 0px -60px !important;;
+}
+
+.x-box-scroller-left .before-scroller-ui-left-disabled{
+	background: url(../images/button_left.png) no-repeat 0px -120px !important;
+	cursor: auto;
+}
+
+.remove-uppercase, .remove-uppercase input, .remove-uppercase textarea{
+	text-transform: none !important;
+}

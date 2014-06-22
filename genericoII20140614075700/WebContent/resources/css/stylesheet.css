@@ -1,0 +1,162 @@
+/* Login */
+.tdTitleL{width:13px;height:48px;background:url(../images/titleLeftCorner.png) no-repeat;}
+.tdTitle{margin:auto;height:48px;background:url(../images/title.png) repeat-x;}
+.tdTitleR{width:14px;height:48px;background:url(../images/titleRightCorner.png) no-repeat;}
+
+/* home */
+.marcoSupIzq{width:11px;height:11px;background:url(../images/leftTopBorder.png ) no-repeat;}
+.marcoSupCen{margin:auto;height:11px;background:url(../images/centerTopBorder.png ) repeat-x;}
+.marcoSupDer{width:14px;height:11px;background:url(../images/rightTopBorder.png ) no-repeat;}
+.marcoIzq{width:11px;background:url(../images/leftBorder.png ) repeat-y;}
+.marco{background:url(../images/border.png ) repeat;}
+.marcoDer{width:15px;background:url(../images/rightBorder.png ) repeat-y;}
+.marcoInfIzq{width:15px;height:15px;background:url(../images/leftLowBorder.png ) no-repeat;}
+.marcoInfCen{margin:auto;height:15px;background:url(../images/centerLowBorder.png) repeat-x;}
+.marcoInfDer{width:15px;height:15px;background:url(../images/rightLowBorder.png ) no-repeat;}
+.fondoPanel{
+	background: url("../images/fondoPanel.gif") repeat-x scroll bottom #fafafa;
+	 /*background: #fafafa;*/
+	padding-top:7px;
+}
+.fondoPanel div{
+	float:left;
+	font-size: 11px !important
+}
+/* header */
+.header {
+	/*background-color: #1E4176 !important; 
+	background:url(../images/hd-bg.gif) repeat-x transparent !important;*/
+	background-position: bottom;
+	color: #666;
+}
+.tableCT{
+    background: url("../images/marcoSupCen.png") repeat-x scroll 0 1px #F1F1F1;
+    border: 1px solid #dadada;
+    border-top:none;
+    border-radius: 5px 5px 5px 5px;
+    color: #676767;
+    display: block;
+    float: left;
+    width: 962px;
+    height: 75px;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+.img{width:4%;height:100%;background: #F7F7F7;border-radius: 5px 5px 5px 5px;}
+.tableCT table{width: 100%;margin-top: 5px}
+.tableCT table tr td{padding-bottom: 5px;}
+.rowCT{width: 95%;padding-top: 4px}
+.c1CT div, .c2CT div, .c3CT div{font-weight: bold;}
+.e1CT, .e2CT, .e3CT{font-weight: bold; padding-left: 5px}
+.c1CT{width: 200px}
+.c2CT{width: 200px}
+.c3CT{width: 190px}
+.e1CT{width: 100px}
+.e2CT{width: 100px}
+.e3CT{width: 120px}
+.ct{
+	width:35px;
+	margin-left:2px;
+	margin-top:5px;
+	height:67px;
+	background: url('../images/controlTiempo.png') no-repeat scroll 0 0 transparent;
+}
+.remision{
+	background-position: 0px 0px;
+}
+.devolucion{
+	background-position: -35px 0px;
+}
+#divEmpresaFicha{
+	width:988px;
+	height:530px;
+	float: left;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+.bbar{
+	float:left;
+	width: 100%;
+	height: 25px;
+	/*border-radius: 5px 5px 5px 5px;*/
+	background: url('../images/marcoSupCen.png') repeat-x scroll 0 1px #e0e0e0;
+}
+#header{width: 100%;font-family: arial;}
+#header #divNameApp{font-size: 28px; margin-top: 7px;}
+.infoEncabezado{font-size: 12px;float:right;text-align: left;padding:0px 10px 0 10px}
+.infoEncabezado div{float:right;}
+
+.ch{
+	width: 33px;
+	height:33px;
+	float:right;
+	display: block;
+	margin-top: 17px
+}
+.inicio{background:url(../images/home.png) no-repeat;}
+.cerrar{background:url(../images/lock.png) no-repeat;margin: 17px 4px 0 8px;}
+.clave{background:url(../images/key.png) no-repeat;margin: 17px 17px 4px 0;}
+
+/* input's */
+input, textarea{text-transform: uppercase !important;}
+.number-field, .number-field input{text-align: right !important;}
+/*checkcolum*/
+.x-grid-checkheader {
+	height: 14px;
+	background-image: url('../images/unchecked.gif');
+	background-position: 50% -2px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+}
+.x-grid-checkheader-checked {background-image: url('../images/checked.gif');}
+.x-grid-checkheader-editor .x-form-cb-wrap {text-align: center;}
+.title_window {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #99BBE8;
+	background-color: #CBDDF3;
+}
+/* iconos */
+.icon{cursor: pointer;}
+.add_icon {background-image: url("../images/add.png") !important;}
+.edit_icon {background-image: url("../images/edit.png") !important;}
+.save_icon {background-image: url("../images/save.png") !important;}
+.delete_icon {background-image: url("../images/delete.png") !important;}
+.cancel_icon {background-image: url("../images/cancel.png") !important;}
+.open_icon {background-image: url("../images/open.png") !important;}
+.search_icon {background-image: url("../images/search.png") !important;}
+.home_icon{background:url(../images/home_16.png) no-repeat !important;}
+.pdf_icon{background:url(../images/page_pdf.png) no-repeat !important;}
+.refresh_icon{background:url(../js/extjs-4.0.1/resources/themes/images/default/grid/refresh.gif) no-repeat !important;}
+.enable_disable_icon{background:url(../images/enableDisable.png) no-repeat !important;}
+.accept_icon{background:url(../images/accept.png) no-repeat !important;}
+
+
+.call-to-action-bar
+			{
+			/*	position: absolute;
+				bottom: 0px;
+				left:0px;
+				color: #FFFFFF;
+				font-size: 10px;*/
+				padding: 1em;
+				width: 100%;
+				/*z-index: 10;
+				font-family: Verdana;
+				text-align: center;
+				white-space: nowrap;
+			
+				/* 
+				Background color and gradients 
+				
+				background-image: url(/media/imagenes/fondos/price-table-header.jpg);
+				background-position: bottom left;
+				background-repeat: repeat-x;
+				background-color: #CF0F29;
+				*/
+			
+				
+				background: #335980;
+				background: -moz-linear-gradient(top, #335980, #071523);
+				background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#335980), to(#071523));
+			}

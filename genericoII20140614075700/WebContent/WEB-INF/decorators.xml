@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/decorators">
+<!-- Any urls that are excluded will never be decorated by Sitemesh -->
+<!--     <excludes> -->
+<!--     aqui se pueden poner estilos CSS, Javascript, Ajax, etc... que no deseamos que sean decorados -->
+<!--         <pattern>/exclude.jsp</pattern> -->
+<!--         <pattern>/exclude/*</pattern> -->
+<!--     </excludes> -->
+	<decorator name="header" page="header.jsp"></decorator>
+    <decorator name="main" page="basic-theme.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>
