@@ -44,7 +44,7 @@
 
 	</bean>
 
-
+	<bean id="contactValidator" class="com.main.validator.ContactValidator" />
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 			p:driverClassName="${jdbc.driverClassName}"
 			p:url="${jdbc.url}"
