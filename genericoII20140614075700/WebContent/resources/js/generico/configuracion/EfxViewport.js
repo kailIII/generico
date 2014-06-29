@@ -86,7 +86,7 @@ EfxViewport = function(){
 							listeners: {
 								itemclick: function(tree, record){
 									if(record && record.get("leaf") === true && !Ext.isEmpty(record.get("itemUrl")))
-										EfxMenu.openSelfWindow(record.get("itemUrl"), record.get("itemUrlParams"));
+										Menu.openSelfWindow(record.get("itemUrl"), record.get("itemUrlParams"));
 								}
 							},
 							store: {
