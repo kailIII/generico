@@ -11,16 +11,16 @@
 <h1>Home page</h1>
 <p>This is Home page. It's available for all users.<br/>
 <acegi:authorize ifAnyGranted="ROLE_MODERATOR">
-<a href="${pageContext.request.contextPath}/sec/moderation.html">Moderation page</a><br/>
+<a href="${pageContext.request.contextPath}/sec/moderation">Moderation page</a><br/>
 </acegi:authorize>
 <acegi:authorize ifAnyGranted="ROLE_ADMIN">
-<a href="${pageContext.request.contextPath}/admin/first.html">First Admin page</a><br/>
-<a href="${pageContext.request.contextPath}/admin/second.html">Second Admin page</a><br/>
+<a href="${pageContext.request.contextPath}/admin/first">First Admin page</a><br/>
+<a href="${pageContext.request.contextPath}/admin/second">Second Admin page</a><br/>
 </acegi:authorize>
 <acegi:authorize ifAnyGranted="ROLE_EMPLEADO">
-<a href="${pageContext.request.contextPath}/productoMain.html">Pantalla de Empleado</a><br/>
+<a href="${pageContext.request.contextPath}/productoMain">Pantalla de Empleado</a><br/>
 </acegi:authorize>
-<a class="linkOpcion first" href="${pageContext.request.contextPath}/admin.html">ADMINISTRACI&Oacute;N</a>
+<a class="linkOpcion first" href="${pageContext.request.contextPath}/admin/">ADMINISTRACI&Oacute;N</a>
 </p>
 </body>
 </html>

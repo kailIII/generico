@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 
 import org.apache.log4j.Logger;
 
+import com.web.util.GenericoUtil;
+
 public class GenericoUtilConstant {
 
 	public static final Logger logger = Logger.getLogger(GenericoUtil.class);

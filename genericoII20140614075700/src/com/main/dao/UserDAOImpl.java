@@ -6,14 +6,21 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.generico.base.BaseDaoImpl;
+import com.generico.exception.AsiWebException;
+import com.main.java.Producto;
 import com.main.java.User;
 
 
 	@Repository
-	public class UserDAOImpl implements UserDAO {
+	public class UserDAOImpl /*extends BaseDaoImpl*/ implements UserDAO {
 
 		@Autowired
 		private SessionFactory sessionFactory;
@@ -45,5 +52,33 @@ import com.main.java.User;
 			else
 				return null;
 		}
+		
+		
+		public void update(User user){
+			sessionFactory.getCurrentSession().merge(user);
+		}
+		
+//		@SuppressWarnings("unchecked")
+//		public List<Object[]> getAllUsuarios() throws AsiWebException {
+//			DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
+//			criteria.setProjection(
+//					Projections.projectionList().
+//						add(Projections.property("id")).
+//						add(Projections.property("login")).
+//						add(Projections.property("password")).
+//						add(Projections.property("usuarioCambiarClave")).
+//						add(Projections.property("usuarioActivo")).
+//						add(Projections.property("usuarioPrimerNombre")).
+//						add(Projections.property("usuarioSegundoNombre")).
+//						add(Projections.property("usuarioprimerApellido")).
+//						add(Projections.property("usuarioSegundoApellido")).
+//						add(Projections.property("usuarioCorreoElectronico")).
+//						add(Projections.property("usuarioDocumento"))
+//					);
+//				criteria.add(Restrictions.ne("id", 0L));
+//				criteria.addOrder(Order.asc("login"));
+//
+//			return (List<Object[]>) findByCriteria(criteria);
+//		}
 
 }

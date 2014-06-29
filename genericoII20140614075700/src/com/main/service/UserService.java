@@ -5,5 +5,6 @@ import com.main.java.User;
 public interface UserService {
 
 	public User getUser(String login);
+	public void update(User user);
 
 }

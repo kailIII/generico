@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.main.dao.UserDAO;
+import com.main.java.Producto;
 import com.main.java.User;
 
 @Service
@@ -18,4 +19,7 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getUser(login);
 	}
 
+	public void update(User user) {
+		userDAO.update(user);
+	}
 }

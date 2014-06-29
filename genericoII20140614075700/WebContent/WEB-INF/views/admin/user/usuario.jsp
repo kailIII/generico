@@ -5,7 +5,7 @@
 <html>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<script type="text/javascript" src="${contextPath}/resources/js/equifax/admin/sgd/sgdUsuario.js"></script>
+		<script type="text/javascript" src="${contextPath}/resources/js/generico/admin/seguridad/usuario.js"></script>
 		<script type="text/javascript">
 			Ext.onReady(function(){
 				Efx.combos.initUsuarios(<c:out value="${sdgUsuariosCombo}" default="[]" escapeXml="false" />);

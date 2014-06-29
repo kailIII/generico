@@ -108,21 +108,22 @@ EfxViewport = function(){
 	        	            	            	 text: "SEGURIDAD",
 	        	            	            	 expanded: true,
 	        	            	            	 children: [
-//													{
-//														text: "USUARIOS",
-//														leaf: true,
-//														itemUrl: "seguridad/usuario/view"
-//													},
+													{
+														text: "USUARIOS",
+														leaf: true,
+														itemUrl: "seguridad/usuario/view"
+													}
+//													,
 //    	            	            	            {
 //    	            	            	            	text: "ASIGNACI\u00D3N DE PERMISOS",
 //    	            	            	            	leaf: true,
 //    	            	            	            	itemUrl: "seguridad/rol"
 //    	            	            	            },
-    	            	            	            {
-    	                	                    	   text: "SUCURSALES",
-    	                	                    	   leaf: true,
-    	                	                    	   itemUrl: "sucursal/view"
-    	                	                       }
+//    	            	            	            {
+//    	                	                    	   text: "SUCURSALES",
+//    	                	                    	   leaf: true,
+//    	                	                    	   itemUrl: "sucursal/view"
+//    	                	                       }
 //    	                	                       {
 //    	                	                    	   text: "NOTIFICACIONES",
 //    	                	                    	   leaf: true,
@@ -163,65 +164,19 @@ EfxViewport = function(){
 																   ctgCodigo :"1"
 															   }
 														   },
+												   {
+													   text :"ESTIMACI\u00d3N DE INGRESOS",
+													   expanded: true,
+													   children : [
 														   {
-															   text: "PRODUCTOS Y SERVICIOS",
-															   leaf: true,
-															   itemUrl: "catalogo/view",
-															   itemUrlParams: {
-																   ctgCatalogoCodigo: "00268",
-																   ctgCodigo :"1"
-															   }
-														   },
-														   {
-															   text: "ACTIVIDADES",
-															   leaf: true,
-															   itemUrl: "catalogo/view",
-															   itemUrlParams: {
-																   ctgCatalogoCodigo: "00269",
-																   ctgCodigo :"1"
-
-															   }
-														   },
-														   {
-															   text: "VARIABLES CRITICAS DEL CLIENTE",
-															   leaf: true,
-															   itemUrl: "catalogo/view",
-															   itemUrlParams: {
-																   ctgCatalogoCodigo: "00305",
-																   ctgCodigo :"1"
-															   }
-														   },
-														   {
-															   text :"ESTIMACI\u00d3N DE INGRESOS",
-															   expanded: true,
-															   children : [
-														   {
-											        	text:"ESTIMACI\u00F3N DE INGRESOS",
-											        	leaf: true,
-											        	itemUrl: "catalogo/view",
-											        	itemUrlParams: {
-											        		ctgCatalogoCodigo: "01262",
-											        		ctgCodigo: "1"
-											        	}
-													},
-														   {
-															   text: "VOL. MENSUAL ESTIMADO OPER. EN TARJETA DE CR\u00c9DITO",
-															   leaf: true,
-															    itemUrl: "catalogo/view",
+													        	text:"ESTIMACI\u00F3N DE INGRESOS",
+													        	leaf: true,
+													        	itemUrl: "catalogo/view",
 													        	itemUrlParams: {
-													        		ctgCatalogoCodigo: "01267",
+													        		ctgCatalogoCodigo: "01262",
 													        		ctgCodigo: "1"
 													        	}
-														   },
-														   {
-															   text: "VOL. MENSUAL ESTIMADO OPER. EN PROD. BANCARIOS(PASIVOS)",
-															   leaf: true,
-															   itemUrl: "catalogo/view",
-													        	itemUrlParams: {
-													        		ctgCatalogoCodigo: "01271",
-													        		ctgCodigo : "1"
-													        	}
-														   }
+															}
 
 														       ]
 														   }
@@ -254,36 +209,6 @@ EfxViewport = function(){
     	                	                    	   text: "DISTRIBUCI\u00D3N TERRITORIAL",
     	                	                    	   leaf: true,
     	                	                    	   itemUrl: "distribucion/view"
-    	                	                       },{
-    	                	                    	   text: "ESTADO CIVIL",
-    	                	                    	   leaf: true,
-    	                	                    	   itemUrl: "catalogo/view",
-    	                	                    	   itemUrlParams: {
-    	                	                    		   ctgCatalogoCodigo: "00012"
-    	                	                    	   }
-    	                	                       },{
-    	                	                    	   text: "G\u00C9NERO",
-    	                	                    	   leaf: true,
-    	                	                    	   itemUrl: "catalogo/view",
-    	                	                    	   itemUrlParams: {
-    	                	                    		   ctgCatalogoCodigo: "00009"
-    	                	                    	   }
-    	                	                       },
-    	                	                      {
-    	                	                    	   text: "PROFESIONES / OCUPACIONES",
-    	                	                    	   leaf: true,
-    	                	                    	   itemUrl: "catalogo/view",
-    	                	                    	   itemUrlParams: {
-    	                	                    		   ctgCatalogoCodigo: "00018"
-    	                	                    	   }
-    	                	                       },
-    	                	                      {
-    	                	                    	   text: "TIPO DE CAMBIO",
-    	                	                    	   leaf: true,
-    	                	                    	   itemUrl: "catalogo/view",
-    	                	                    	   itemUrlParams: {
-    	                	                    		   ctgCatalogoCodigo: "00477"
-    	                	                    	   }
     	                	                       }
 	                	                        ]
         	                	            },{
@@ -306,49 +231,8 @@ EfxViewport = function(){
 	    	    	                	                    	   itemUrlParams: {
 	    	    	                	                    		   ctgCatalogoCodigo: "00294"
 	    	    	                	                    	   }
-	    	    	                	                       },
-															 {
-	    	    	                	                    	   text: "ACTIVIDADES ART. 15",
-	    	    	                	                    	   leaf: true,
-	    	    	                	                    	   itemUrl: "catalogo/view",
-	    	    	                	                    	   itemUrlParams: {
-	    	    	                	                    		   ctgCatalogoCodigo: "01075"
-	    	    	                	                    	   }
-	    	    	                	                       },
-	    	    	                	                       {
-	    	    	                	                    	   text: "CONDICI\u00d3N DE VIVIENDA",
-	    	    	                	                    	   leaf: true,
-	    	    	                	                    	   itemUrl: "catalogo/view",
-	    	    	                	                    	   itemUrlParams: {
-	    	    	                	                    		   ctgCatalogoCodigo: "01429"
-	    	    	                	                    	   }
-	    	    	                	                       },
-	    	    	                	                       {
-	    	    	                	                    	   text: "ACTIVIDADES ECON\u00d3MICAS",
-	    	    	                	                    	   leaf: true,
-	    	    	                	                    	   itemUrl: "catalogo/view",
-	    	    	                	                    	   itemUrlParams: {
-	    	    	                	                    		   ctgCatalogoCodigo: "00773"
-	    	    	                	                    	   }
-	    	    	                	                       },
-	    	    	                	                       {
-	    	    	                	                    	   text: "GRADO ACAD\u00c9MICO",
-	    	    	                	                    	   leaf: true,
-	    	    	                	                    	   itemUrl: "catalogo/view",
-	    	    	                	                    	   itemUrlParams: {
-	    	    	                	                    		   ctgCatalogoCodigo: "00502"
-	    	    	                	                    	   }
-	    	    	                	                       },
-	    	      	                	                      {
-	    	     	                	                    	   text: "TIPO DE MONEDA",
-	    	     	                	                    	   leaf: true,
-	    	     	                	                    	   itemUrl: "catalogo/view",
-	    	     	                	                    	   itemUrlParams: {
-	    	     	                	                    		   ctgCatalogoCodigo: "00573"
-	    	     	                	                    	   }
-	    	     	                	                       }
-																/** HASTA ACA ACTIVIDAD ECONOMICA*/
-															         ]
+	    	    	                	                       }
+														]
 													}
 	        	                	             ]
 	    		        	                 }

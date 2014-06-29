@@ -5,8 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.text.DecimalFormat;
@@ -23,6 +25,9 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -46,6 +51,10 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.hibernate.EntityMode;
+import org.hibernate.SessionFactory;
+import org.hibernate.metadata.ClassMetadata;
+import org.hibernate.proxy.HibernateProxy;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Months;
@@ -63,6 +72,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.generico.web.annotation.GenericoProperty;
 import com.main.dao.UserDAO;
 import com.main.java.User;
 import com.web.security.CustomUser;
@@ -144,7 +154,6 @@ public class GenericoUtil extends GenericoUtilConstant {
 	public static Object getBean(String beanId) {
 		return GenericoApplicationContextProvider.getApplicationContext().getBean(beanId);
 	}
-
 
 	public static String getBase64Encode(String theString) {
 		return new String(Base64.encodeBase64(Base64.encodeBase64(theString.getBytes())));
