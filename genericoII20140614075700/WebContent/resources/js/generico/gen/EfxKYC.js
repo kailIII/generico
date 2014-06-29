@@ -92,15 +92,15 @@ EfxKYC = function(){
 		loadAlertas: function(kycPep, kycPepRelacionado, kycPepSociedad, kycArticulo15, kycListaInternacional){
 			var innerHTML = "";
 			if("1" == kycPep)
-				innerHTML += "<img src=\"" + Efx.constants.CONTEXT_PATH + "/resources/images/pep/img_PEP.png\" width=\"100\" height=\"50\" onclick=\"EfxMenu.mostrarAlertas('" + EfxKYC.getKycReporte().PEP + "')\" />";
+				innerHTML += "<img src=\"" + Efx.constants.CONTEXT_PATH + "/resources/images/pep/img_PEP.png\" width=\"100\" height=\"50\" onclick=\"Menu.mostrarAlertas('" + EfxKYC.getKycReporte().PEP + "')\" />";
 			if("1" == kycPepRelacionado)
-				innerHTML += "<img src=\"" + Efx.constants.CONTEXT_PATH + "/resources/images/pep/img_pep_relacionado.png\" width=\"100\" height=\"50\" onclick=\"EfxMenu.mostrarAlertas('" + EfxKYC.getKycReporte().PEP + "')\" />";
+				innerHTML += "<img src=\"" + Efx.constants.CONTEXT_PATH + "/resources/images/pep/img_pep_relacionado.png\" width=\"100\" height=\"50\" onclick=\"Menu.mostrarAlertas('" + EfxKYC.getKycReporte().PEP + "')\" />";
 			if("1" == kycPepSociedad)
-				innerHTML += "<img src=\"" + Efx.constants.CONTEXT_PATH + "/resources/images/pep/img_sociedad_pep.png\" width=\"100\" height=\"50\" onclick=\"EfxMenu.mostrarAlertas('" + EfxKYC.getKycReporte().PEP + "')\" />";
+				innerHTML += "<img src=\"" + Efx.constants.CONTEXT_PATH + "/resources/images/pep/img_sociedad_pep.png\" width=\"100\" height=\"50\" onclick=\"Menu.mostrarAlertas('" + EfxKYC.getKycReporte().PEP + "')\" />";
 			if("1" == kycArticulo15)
-				innerHTML += "<img src=\"" + Efx.constants.CONTEXT_PATH + "/resources/images/pep/img_art15.png\" width=\"100\" height=\"50\" onclick=\"EfxMenu.mostrarAlertas('" + EfxKYC.getKycReporte().ARTICULO15 + "')\" />";
+				innerHTML += "<img src=\"" + Efx.constants.CONTEXT_PATH + "/resources/images/pep/img_art15.png\" width=\"100\" height=\"50\" onclick=\"Menu.mostrarAlertas('" + EfxKYC.getKycReporte().ARTICULO15 + "')\" />";
 			if("1" == kycListaInternacional)
-				innerHTML += "<img src=\"" + Efx.constants.CONTEXT_PATH + "/resources/images/pep/img_lista_internacional.png\" width=\"100\" height=\"50\" onclick=\"EfxMenu.mostrarAlertas('" + EfxKYC.getKycReporte().LISTA_INTERNACIONAL + "')\" />";
+				innerHTML += "<img src=\"" + Efx.constants.CONTEXT_PATH + "/resources/images/pep/img_lista_internacional.png\" width=\"100\" height=\"50\" onclick=\"Menu.mostrarAlertas('" + EfxKYC.getKycReporte().LISTA_INTERNACIONAL + "')\" />";
 			if(!Ext.isEmpty(innerHTML) && Ext.get("kycAlertasContent")){
 				Ext.get("kycAlertasContent").dom.innerHTML = innerHTML;
 				Efx.utils.setVisible("kycAlertasPanel", true);

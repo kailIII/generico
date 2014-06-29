@@ -26,7 +26,7 @@ KycPaqueteCuentaCorriente = function(){
 				Efx.message.alert(Efx.constants.KYC_NO_EXISTE_PERSONA_FISICA);
 				return;
 			}
-			EfxMenu.openSelfWindow(
+			Menu.openSelfWindow(
 				"kycPaquetesAdicionales/view",
 				{
 					kycId: EfxKYC.getKycId(),

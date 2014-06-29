@@ -18,7 +18,7 @@ KycBusquedaPersonaJuridica = function(){
 							EfxKYC.setKycId(jsonObject.kycId);
 							EfxKYC.setKycPersonaJuridicaId(jsonObject.kycPersonaJuridicaId);
 							Efx.message.confirmProcess(jsonObject.message, function(){
-								EfxMenu.openSelfWindow(
+								Menu.openSelfWindow(
 									"kycPersonaJuridica/view",
 									{
 										kycId: EfxKYC.getKycId(),
@@ -58,7 +58,7 @@ KycBusquedaPersonaJuridica = function(){
 							EfxKYC.setKycId(jsonObject.kycId);
 							EfxKYC.setKycPersonaJuridicaId(jsonObject.kycPersonaJuridicaId);
 							Efx.message.confirmProcess(jsonObject.message, function(){
-								EfxMenu.openSelfWindow(
+								Menu.openSelfWindow(
 									"kycPersonaJuridica/view",
 									{
 										kycId: EfxKYC.getKycId(),

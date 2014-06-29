@@ -3,7 +3,7 @@ KycBusquedaPersonaFisica = function(){
 		newBlankKyc: function(){
 			var record = Efx.combos.getSelectedData("ctgTipoDocumentoId", "ctgTipoDocumentoId");
 			if(record){
-				EfxMenu.openSelfWindow("kycPersonaFisica/view", {
+				Menu.openSelfWindow("kycPersonaFisica/view", {
 					ctgTipoDocumentoId: record.ctgTipoDocumentoId,
 					ctgTipoDocumentoCodigo: record.ctgTipoDocumentoHijo,
 					kycPersonaFisicaDocumento1: Efx.utils.getValue("kycDocumento1")
@@ -33,7 +33,7 @@ KycBusquedaPersonaFisica = function(){
 							EfxKYC.setKycId(jsonObject.kycId);
 							EfxKYC.setKycPersonaFisicaId(jsonObject.kycPersonaFisicaId);
 							Efx.message.confirmProcess(jsonObject.message, function(){
-								EfxMenu.openSelfWindow(
+								Menu.openSelfWindow(
 									"kycPersonaFisica/view",
 									{
 										kycId: EfxKYC.getKycId(),
@@ -69,7 +69,7 @@ KycBusquedaPersonaFisica = function(){
 							EfxKYC.setKycId(jsonObject.kycId);
 							EfxKYC.setKycPersonaFisicaId(jsonObject.kycPersonaFisicaId);
 							Efx.message.confirmProcess(jsonObject.message, function(){
-								EfxMenu.openSelfWindow(
+								Menu.openSelfWindow(
 									"kycPersonaFisica/view",
 									{
 										kycId: EfxKYC.getKycId(),

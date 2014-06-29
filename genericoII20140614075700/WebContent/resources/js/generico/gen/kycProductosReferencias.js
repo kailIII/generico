@@ -63,7 +63,7 @@ KycProductosReferencias = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle de referencias personales",
-				            	handler: EfxMenu.abrirProductosReferenciaPersonal
+				            	handler: Menu.abrirProductosReferenciaPersonal
 	            			}
 			            ]
 					},
@@ -115,7 +115,7 @@ KycProductosReferencias = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle de referencias comerciales",
-				            	handler: EfxMenu.abrirProductosReferenciaComercial
+				            	handler: Menu.abrirProductosReferenciaComercial
 	            			}
 			            ]
 					}

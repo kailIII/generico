@@ -181,7 +181,7 @@ Efx.constants.icons.IMAGES_ICON = "images_icon";
 Efx.constants.icons.COINS_ICON="coins_icon";
 Efx.constants.XLS_ICON = "xls_icon";
 Efx.constants.icons.SCORE_ICON = 'calculator';
-Efx.constants.APPLICATION_TITLE = 'KYC - CITIBANK';
+Efx.constants.APPLICATION_TITLE = 'ASI2 - ALFINTE';
 
 Efx.constants.icons.CALCULATOR_ICON = "calculator";
 Efx.constants.icons.REFERENCE_ICON = "reference";

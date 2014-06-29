@@ -60,7 +60,7 @@ KycPaquetes = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle: Cuenta corriente",
-				            	handler: EfxMenu.abrirPaqueteCuentaCorriente
+				            	handler: Menu.abrirPaqueteCuentaCorriente
 	            			}
 			            ]
 					},{
@@ -107,7 +107,7 @@ KycPaquetes = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle: Cuenta Ahorro",
-				            	handler: EfxMenu.abrirPaqueteCuentaAhorro
+				            	handler: Menu.abrirPaqueteCuentaAhorro
 	            			}
 			            ]
 					}

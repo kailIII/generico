@@ -43,7 +43,7 @@ KycReferencias = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle de referencias personales",
-				            	handler: EfxMenu.abrirReferenciaPersonal
+				            	handler: Menu.abrirReferenciaPersonal
 	            			}
 			            ]
 					},{
@@ -71,7 +71,7 @@ KycReferencias = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle de referencias bancarias",
-				            	handler: EfxMenu.abrirReferenciaBancaria
+				            	handler: Menu.abrirReferenciaBancaria
 	            			}
 			            ],listeners: {
 			            	render: function(){
@@ -105,7 +105,7 @@ KycReferencias = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle de referencias comerciales",
-				            	handler: EfxMenu.abrirReferenciaComercial
+				            	handler: Menu.abrirReferenciaComercial
 	            			}
 			            ],listeners: {
 			            	render: function(){

@@ -27,7 +27,7 @@ KycProductoSuperDeposito = function(){
 				Efx.message.alert(Efx.constants.KYC_NO_EXISTE_PERSONA_FISICA);
 				return;
 			}
-			EfxMenu.openSelfWindow(
+			Menu.openSelfWindow(
 				"kycProductosAdicionales/view",
 				{
 					kycId: EfxKYC.getKycId(),

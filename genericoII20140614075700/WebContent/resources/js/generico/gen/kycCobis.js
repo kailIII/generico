@@ -33,7 +33,7 @@ KycCobis = function() {
 			var kycAlertas = EfxKYC.getKycAlertas();
 			var configToReturn = {};
 			configToReturn.items = [];
-			if(EfxMenu.getKycMostrarCobis()==false){
+			if(Menu.getKycMostrarCobis()==false){
 				Ext.LoadMask.prototype.disable();
 				kycPersonaFisicaWindow = Ext.create("Ext.window.Window", {
 				id : "kycRetoronoMensaje",

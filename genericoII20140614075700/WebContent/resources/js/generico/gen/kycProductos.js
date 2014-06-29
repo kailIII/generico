@@ -60,7 +60,7 @@ KycProductos = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle: Cuenta corriente",
-				            	handler: EfxMenu.abrirProductoCuentaCorriente
+				            	handler: Menu.abrirProductoCuentaCorriente
 	            			}
 			            ]
 					},{
@@ -107,7 +107,7 @@ KycProductos = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle: Cuenta Ahorro",
-				            	handler: EfxMenu.abrirProductoCuentaAhorro
+				            	handler: Menu.abrirProductoCuentaAhorro
 	            			}
 			            ]
 					},{
@@ -154,7 +154,7 @@ KycProductos = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle: Cuenta Futuro",
-				            	handler: EfxMenu.abrirProductoCuentaFuturo
+				            	handler: Menu.abrirProductoCuentaFuturo
 	            			}
 			            ]
 					},{
@@ -201,7 +201,7 @@ KycProductos = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle: Super Deposito Ahorro",
-				            	handler: EfxMenu.abrirProductoSuperDeposito
+				            	handler: Menu.abrirProductoSuperDeposito
 	            			}
 			            ]
 					}

@@ -61,7 +61,7 @@ KycCredito = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle: Credito personal",
-				            	handler: EfxMenu.abrirCreditoPersonal
+				            	handler: Menu.abrirCreditoPersonal
 	            			}
 			            ]
 					},{
@@ -109,7 +109,7 @@ KycCredito = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle: Credito prendario",
-				            	handler: EfxMenu.abrirCreditoPrendario
+				            	handler: Menu.abrirCreditoPrendario
 	            			}
 			            ]
 					},{
@@ -157,7 +157,7 @@ KycCredito = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle: Credito hipotecario",
-				            	handler: EfxMenu.abrirDatosCreditoHipotecario
+				            	handler: Menu.abrirDatosCreditoHipotecario
 	            			}
 			            ]
 					}

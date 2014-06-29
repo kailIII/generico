@@ -201,7 +201,7 @@ EfxDigitalizacion = function(){
 		        	        listeners: {
 		        	        	itemdblclick: function(view, record){
 		        	        		if(record.get("leaf") == true){
-		        	        			EfxMenu.openWindow("documentoAdjunto/viewFile?codigo=" + record.get("fileLocation") + "&kycId=" + EfxKYC.getKycId());
+		        	        			Menu.openWindow("documentoAdjunto/viewFile?codigo=" + record.get("fileLocation") + "&kycId=" + EfxKYC.getKycId());
 		        	        		}
 		        	        	}
 		        	        }

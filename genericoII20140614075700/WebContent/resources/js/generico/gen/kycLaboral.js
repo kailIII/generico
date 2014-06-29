@@ -79,7 +79,7 @@ KycLaboral = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle: Asalariado",
-				            	handler: EfxMenu.abrirDatosLaboralesAsalariado
+				            	handler: Menu.abrirDatosLaboralesAsalariado
 	            			}
 			            ]
 					},{
@@ -146,7 +146,7 @@ KycLaboral = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle: Ingresos Propios",
-				            	handler: EfxMenu.abrirDatosLaboralesIngresosPropios
+				            	handler: Menu.abrirDatosLaboralesIngresosPropios
 	            			}
 			            ]
 					},{
@@ -213,7 +213,7 @@ KycLaboral = function(){
 				            {
 				            	type: "expand",
 				            	qtip: "Detalle: Personas Dependientes",
-				            	handler: EfxMenu.abrirDatosLaboralesPersonasDependientes
+				            	handler: Menu.abrirDatosLaboralesPersonasDependientes
 	            			}
 			            ]
 					}
