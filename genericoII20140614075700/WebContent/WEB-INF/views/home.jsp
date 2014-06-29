@@ -20,6 +20,7 @@
 <acegi:authorize ifAnyGranted="ROLE_EMPLEADO">
 <a href="${pageContext.request.contextPath}/productoMain.html">Pantalla de Empleado</a><br/>
 </acegi:authorize>
+<a class="linkOpcion first" href="${pageContext.request.contextPath}/admin.html">ADMINISTRACI&Oacute;N</a>
 </p>
 </body>
 </html>

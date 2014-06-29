@@ -16,7 +16,7 @@
 <link type="text/css" href='<spring:url value="/resources/js/extjs-4.0.1/resources/css/my-ext-theme.css" />' rel="stylesheet" />
 
 	<script type="text/javascript" src='<spring:url value="/resources/js/generico.js" />'></script>
-    <script type="text/javascript" src='<spring:url value="/resources/js/generico/EfxMenu.js" />'></script>
+    <script type="text/javascript" src='<spring:url value="/resources/js/generico/Menu.js" />'></script>
     <script type="text/javascript" src='<spring:url value="/resources/js/generico/gen/EfxKYC.js" />'></script>
     <script type="text/javascript" src='<spring:url value="/resources/js/ux/CheckColumn.js" />'></script>
     <script type="text/javascript" src='<spring:url value="/resources/js/ux/NumericField.js" />'></script>

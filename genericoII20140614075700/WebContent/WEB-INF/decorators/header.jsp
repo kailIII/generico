@@ -22,9 +22,7 @@
 ${requestScope.headerTitle}
 </c:if>
 </div>
-<!--
 <div id="clock" style="float: right;"></div>
--->
 <div style="float: right;">
 USUARIO: <b><acegi:authentication property="principal.fullName" /></b>
 </div>
