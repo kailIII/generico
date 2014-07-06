@@ -10,5 +10,5 @@ public interface UserDAO {
 	public User getUser(String login);
 	public User getUserById(Long id);
 	public void update(User user);
-//	public List<Object[]> getAllUsuarios() throws AsiWebException;
+	public List<Object[]> getAllUsuarios() throws AsiWebException;
 }

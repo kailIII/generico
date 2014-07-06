@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.ProjectionList;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -53,13 +54,13 @@ public interface BaseDao {
 	public List<?> findByProperty(Class<?> entityClass, String entityProperty,
 			Object entityValue) throws AsiWebException;
 
-	public List<?> findByCriteria(DetachedCriteria criteria)
+	public List<?> findByCriteria(Criteria criteria)
 			throws AsiWebException;
 
-	public List<?> findByHQLQuery(String hqlQuery, Object[] values)
+	public List<?> findByHQLQuery(String hqlQuery, Object[] values, String nombres)
 			throws AsiWebException;
 
-	public List<?> findBySQLQuery(String sqlQuery, Object[] values)
+	public List<?> findBySQLQuery(String sqlQuery, Object[] values, String nombres)
 			throws AsiWebException;
 
 	public void executeNonHibernateQuery(String hqlQuery,

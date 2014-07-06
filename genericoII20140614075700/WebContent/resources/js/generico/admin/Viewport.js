@@ -112,18 +112,17 @@ EfxViewport = function(){
 														text: "USUARIOS",
 														leaf: true,
 														itemUrl: "seguridad/usuario/view"
-													}
-//													,
+													},
 //    	            	            	            {
 //    	            	            	            	text: "ASIGNACI\u00D3N DE PERMISOS",
 //    	            	            	            	leaf: true,
 //    	            	            	            	itemUrl: "seguridad/rol"
 //    	            	            	            },
-//    	            	            	            {
-//    	                	                    	   text: "SUCURSALES",
-//    	                	                    	   leaf: true,
-//    	                	                    	   itemUrl: "sucursal/view"
-//    	                	                       }
+    	            	            	            {
+    	                	                    	   text: "SUCURSALES",
+    	                	                    	   leaf: true,
+    	                	                    	   itemUrl: "sucursal/view"
+    	                	                       }
 //    	                	                       {
 //    	                	                    	   text: "NOTIFICACIONES",
 //    	                	                    	   leaf: true,

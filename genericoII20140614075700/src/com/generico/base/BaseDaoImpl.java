@@ -12,8 +12,11 @@ import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.ProjectionList;
@@ -21,8 +24,9 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.hibernate.transform.ResultTransformer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+//import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ReflectionUtils;
@@ -31,12 +35,13 @@ import com.generico.exception.AsiWebException;
 import com.generico.web.annotation.GenericoClassJsonProperty;
 import com.generico.web.annotation.GenericoFormatDate;
 import com.generico.web.annotation.GenericoTrimToZero;
+import com.main.java.User;
 import com.web.util.GenericoUtil;
 
 
 
 @Transactional
-public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
+public class BaseDaoImpl /*extends HibernateDaoSupport*/ implements BaseDao{
 
 		private static final String PROJECTION_PROPERTIES_KEY = "projectionProperties";
 		private static final String PROJECTION_LIST_KEY = "projectionList";
@@ -45,23 +50,36 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 		private static final String DELETE = "delete";
 		public static Logger logger = Logger.getLogger(BaseDaoImpl.class);
 		private JdbcTemplate jdbcTemplate;
+		
+		
+		@Autowired
+		private SessionFactory sessionFactory;
+
+		private Session openSession() {
+			return sessionFactory.getCurrentSession();
+		}
+		
+		
 
 		@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false, rollbackFor = {
 				Exception.class, AsiWebException.class })
 		private void trx(Object object, String operation) throws AsiWebException {
 			try { 
 				if ("save".equals(operation)) {
-						getHibernateTemplate().saveOrUpdate(object);
+						openSession().getSessionFactory().getCurrentSession().saveOrUpdate(object);
+//						getHibernateTemplate().saveOrUpdate(object);
 				} else if ("update".equals(operation))
-					getHibernateTemplate().update(object);
+					openSession().getSessionFactory().getCurrentSession().update(object);
+//					getHibernateTemplate().update(object);
 				else if ("delete".equals(operation))
-					getHibernateTemplate().delete(object);
+					openSession().getSessionFactory().getCurrentSession().delete(object);
+//					getHibernateTemplate().delete(object);
 			} catch (Exception e) {
 				String message = "No se pudo ejecutar transaccion";
 				logger.error(message + ": " + e, e);
 				throw new AsiWebException(message);
 			}
-			// logger.info("Transaccion ejecutada correctamente.");
+			 logger.info("Transaccion ejecutada correctamente.");
 		}
 
 		public void save(Object object) throws AsiWebException {
@@ -106,7 +124,7 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 			ProjectionList projectionList = Projections.projectionList();
 			List<String> fieldNames = Collections.emptyList();
 			try {
-				DetachedCriteria criteria = DetachedCriteria.forClass(entityClass);
+				Criteria criteria = openSession().getSessionFactory().getCurrentSession().createCriteria(entityClass);
 				if (projectionListProvided == null
 						|| projectionListProvided.getLength() == 0) {
 					HashMap<String, Object> map = getProjectionList(entityClass);
@@ -162,7 +180,7 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 			ProjectionList projectionList = Projections.projectionList();
 			List<String> fieldNames = Collections.emptyList();
 			try {
-				DetachedCriteria criteria = DetachedCriteria.forClass(entityClass);
+				Criteria criteria = openSession().getSessionFactory().getCurrentSession().createCriteria(entityClass);
 				if (projectionListProvided == null
 						|| projectionListProvided.getLength() == 0) {
 					HashMap<String, Object> map = getProjectionList(entityClass);
@@ -198,7 +216,7 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 		public Integer countAll(Class<?> entityClass) throws AsiWebException {
 			Integer rowCount = new Integer(-1);
 			try {
-				DetachedCriteria criteria = DetachedCriteria.forClass(entityClass);
+				Criteria criteria = openSession().getSessionFactory().getCurrentSession().createCriteria(entityClass);
 				criteria.setProjection(Projections.rowCount());
 				rowCount = (Integer) findByCriteria(criteria).get(0);
 			} catch (Exception e) {
@@ -213,7 +231,8 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 				throws AsiWebException {
 			Object object = null;
 			try {
-				object = getHibernateTemplate().get(entityClass, entityId);
+				object = openSession().getSessionFactory().getCurrentSession().get(entityClass, entityId);
+//				object = getHibernateTemplate().get(entityClass, entityId);
 			} catch (Exception e) {
 				String message = "No se pudo ejecutar consulta";
 				logger.error(message + ": " + e, e);
@@ -239,7 +258,7 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 				Object entityValue) throws AsiWebException {
 			List<?> items = Collections.emptyList();
 			try {
-				DetachedCriteria criteria = DetachedCriteria.forClass(entityClass);
+				Criteria criteria = openSession().getSessionFactory().getCurrentSession().createCriteria(entityClass);
 				HashMap<String, Object> map = getProjectionList(entityClass);
 				List<String> fieldNames = (List<String>) map
 						.get(PROJECTION_PROPERTIES_KEY);
@@ -257,11 +276,12 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 			return items;
 		}
 
-		public List<?> findByCriteria(DetachedCriteria criteria)
+		public List<?> findByCriteria(Criteria criteria)
 				throws AsiWebException {
 			List<?> items = Collections.emptyList();
 			try {
-				items = getHibernateTemplate().findByCriteria(criteria);
+				items = criteria.list();
+//				items = getHibernateTemplate().findByCriteria(criteria);
 			} catch (Exception e) {
 				String message = "No se pudo ejecutar consulta";
 				logger.error(message + ": " + e, e);
@@ -270,11 +290,14 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 			return items;
 		}
 
-		public List<?> findByHQLQuery(String hqlQuery, Object[] values)
+		public List<?> findByHQLQuery(String hqlQuery, Object[] values, String nombres)
 				throws AsiWebException {
 			List<?> items = Collections.emptyList();
 			try {
-				items = getHibernateTemplate().find(hqlQuery, values);
+				Query query = openSession().createQuery(hqlQuery);
+				query.setParameter(nombres, values);
+				items = query.list();
+//				items = getHibernateTemplate().find(hqlQuery, values);
 			} catch (Exception e) {
 				String message = "No se pudo ejecutar consulta";
 				logger.error(message + ": " + e, e);
@@ -283,11 +306,14 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 			return items;
 		}
 
-		public List<?> findBySQLQuery(String sqlQuery, Object[] values)
+		public List<?> findBySQLQuery(String sqlQuery, Object[] values, String nombres)
 				throws AsiWebException {
 			List<?> items = Collections.emptyList();
 			try {
-				items = getJdbcTemplate().queryForList(sqlQuery, values);
+				Query query = openSession().createSQLQuery(sqlQuery);
+				query.setParameter(nombres, values);
+				items = query.list();
+//				items = getJdbcTemplate().queryForList(sqlQuery, values);
 			} catch (Exception e) {
 				String message = "No se pudo ejecutar consulta";
 				logger.error(message + ": " + e, e);
@@ -299,8 +325,9 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 		public void executeNonHibernateQuery(String hqlQuery,
 				Map<String, Object> parameters) throws AsiWebException {
 			try {
-				Query query = getHibernateTemplate().getSessionFactory()
-						.getCurrentSession().createQuery(hqlQuery);
+//				Query query = getHibernateTemplate().getSessionFactory()
+//						.getCurrentSession().createQuery(hqlQuery);
+				Query query = openSession().getSessionFactory().getCurrentSession().createQuery(hqlQuery);
 				for (Entry<String, Object> entry : parameters.entrySet())
 					query.setParameter(entry.getKey(), entry.getValue());
 				query.executeUpdate();

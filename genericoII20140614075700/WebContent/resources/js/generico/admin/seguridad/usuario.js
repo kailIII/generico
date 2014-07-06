@@ -3,27 +3,27 @@ SgdUsuarios = function(){
 		getCtgTipoDocumentos: function(){return ctgTipoDocumentos;},
 		setCtgTipoDocumentos: function(values){ctgTipoDocumentos = values;},
 		buttonsConfig: {
-			add: "sgdUsuariosAgregar",
-			edit: "sgdUsuariosEditar",
-			save: "sgdUsuariosGuardar",
-			remove: "sgdUsuariosEliminar",
-			cancel: "sgdUsuariosCancelar",
-			grid: "sgdUsuariosGrid",
-			form: "sgdUsuariosForm"
+			add: "usersAgregar",
+			edit: "usersEditar",
+			save: "usersGuardar",
+			remove: "usersEliminar",
+			cancel: "usersCancelar",
+			grid: "usersGrid",
+			form: "usersForm"
 		},
 		eliminarDatos: function(url, path){
 			Efx.message.confirmDelete(function(){
-				Ext.getCmp("sgdUsuariosForm").getForm().submit({
+				Ext.getCmp("usersForm").getForm().submit({
 					url: Efx.constants.CONTEXT_PATH + "/seguridad/usuario/delete",
 					timeout: Efx.constants.TIMEOUT_SECONDS,
 					success: function(form, action){
 						Efx.message.alert(action.result.message);
 						Efx.form.switchButton(SgdUsuarios.buttonsConfig, "remove");
-						Ext.getCmp("sgdUsuariosGrid").down("#save").disable();
-						Ext.getCmp("sgdUsuariosGrid").getStore().read();
+						Ext.getCmp("usersGrid").down("#save").disable();
+						Ext.getCmp("usersGrid").getStore().read();
 						if(action.result.sdgUsuariosCombo){
 							Efx.combos.initUsuarios(action.result.sdgUsuariosCombo || []);
-	    					Ext.getCmp("sgdUsuarioPadreId").store.loadData(Efx.combos.getAllUsuarios());
+	    					Ext.getCmp("userPadreId").store.loadData(Efx.combos.getAllUsuarios());
 						}
 					},
 					failure: Efx.form.failureProcedure
@@ -33,18 +33,18 @@ SgdUsuarios = function(){
 		guardarDatos: function(url, path){
 			if(Ext.getCmp("pass1").value==Ext.getCmp("pass2").value){
 				Efx.message.progress("Guardando Informaci\u00F3n..."),
-				Ext.getCmp("sgdUsuariosForm").getForm().submit({
+				Ext.getCmp("usersForm").getForm().submit({
 	    			url: Efx.constants.CONTEXT_PATH + "/seguridad/usuario/save",
 	    			timeout: Efx.constants.TIMEOUT_SECONDS,
 	    			success: function(form, action){
 	    				Ext.Msg.hide();
 	    				Efx.message.alert(action.result.message);
 	    				Efx.form.switchButton(SgdUsuarios.buttonsConfig, "save");
-	    				Ext.getCmp("sgdUsuariosGrid").down("#save").disable();
-	    				Ext.getCmp("sgdUsuariosGrid").getStore().read();
+	    				Ext.getCmp("usersGrid").down("#save").disable();
+	    				Ext.getCmp("usersGrid").getStore().read();
 	    				if(action.result.sdgUsuariosCombo){
 		    				Efx.combos.initUsuarios(action.result.sdgUsuariosCombo || []);
-	    					Ext.getCmp("sgdUsuarioPadreId").store.loadData(Efx.combos.getAllUsuarios());
+	    					Ext.getCmp("userPadreId").store.loadData(Efx.combos.getAllUsuarios());
 	    				}
 	    			},
 	    			failure: Efx.form.failureProcedure
@@ -82,11 +82,11 @@ SgdUsuarios = function(){
 							]
 						}],
 					    columns: [
-			              {header: "Usuario",  dataIndex: "sgdUsuarioUsuario",  width: 120},
-			              {header: "Nombre",  dataIndex: "sgdUsuarioPrimerNombre", width: 120},
-			              {header: "",  dataIndex: "sgdUsuarioPrimerApellido", flex: 1},
+			              {header: "Usuario",  dataIndex: "login",  width: 120},
+			              {header: "Nombre",  dataIndex: "usuarioPrimerNombre", width: 120},
+			              {header: "",  dataIndex: "usuarioprimerApellido", flex: 1},
 			              {dataIndex: 'ctgSucursal', hidden: true},
-			              {dataIndex: 'sgdUsuarioPadre', hidden: true}
+			              {dataIndex: 'userPadre', hidden: true}
 					    ],
 			            features: [{
 			        	   ftype: "grouping",
@@ -97,7 +97,7 @@ SgdUsuarios = function(){
 						listeners: {
 							itemclick: function(view, record){
 								Efx.form.switchButton(SgdUsuarios.buttonsConfig, "rowclick");
-								Efx.form.setValues("sgdUsuariosForm", record.data);
+								Efx.form.setValues("usersForm", record.data);
 			                },
 			                edit: function(){
 								var s = this.getView().store;
@@ -116,27 +116,19 @@ SgdUsuarios = function(){
 			});
 			Ext.define('SgdUsuario', {
 				extend: 'Ext.data.Model',
-				idProperty: 'sgdUsuarioId',
+				idProperty: 'id',
 				fields: [
-				    {name: "sgdUsuarioId"},
-			    	{name: "sgdUsuarioActivo"},
-					{name: "sgdUsuarioUsuario"},
-		    		{name: "sgdUsuarioClave"},
-					{name: "sgdUsuarioPrimerNombre"},
-	    			{name: "sgdUsuarioSegundoNombre"},
-					{name: "sgdUsuarioPrimerApellido"},
-					{name: "sgdUsuarioSegundoApellido"},
-					{name: "sgdUsuarioCorreoElectronico"},
-					{name: "sgdUsuarioPadreId"},
-					{name: "ctgTipoSucursalId"},
-					{name: "ctgSubTipoSucursalId"},
-					{name: "ctgSucursalId"},
-					{name: "ctgSucursalNombre"},
-					{name: "sgdUsuarioCambiarClave"},
-					{name: "ctgTipoDocumentoId"},
-					{name: "sgdUsuarioDocumento"},
-					{name: "ctgSucursal"},
-					{name: "sgdUsuarioPadre"}
+							{name: "id"},
+							{name: "login"},
+							{name: "password"},
+							{name: "usuarioCambiarClave"},
+							{name: "usuarioActivo"},
+							{name: "usuarioPrimerNombre"},
+							{name: "usuarioSegundoNombre"},
+							{name: "usuarioprimerApellido"},
+							{name: "usuarioSegundoApellido"},
+							{name: "usuarioCorreoElectronico"},
+							{name: "usuarioDocumento"}
 				]
 			});
 			Ext.tip.QuickTipManager.init();
@@ -166,8 +158,8 @@ SgdUsuarios = function(){
 									ctgSucursalId: this.data.ctgSucursalId,
 									ctgSucursalNombre: this.data.ctgSucursalNombre
 								};
-								this.data.sgdUsuarioPadre = {
-									sgdUsuarioId: this.data.sgdUsuarioPadreId
+								this.data.userPadre = {
+									id: this.data.userPadreId
 								};
 							});
 						}
@@ -175,7 +167,7 @@ SgdUsuarios = function(){
 					write: function(proxy, operation){
 						Efx.message.alert("Los cambios se realizaron con &eacute;xito");
 						Efx.form.switchButton(SgdUsuarios.buttonsConfig, "save");
-						Ext.getCmp('sgdUsuariosGrid').getStore().read();
+						Ext.getCmp('usersGrid').getStore().read();
 						Ext.Ajax.request({
 							timeout: Efx.constants.TIMEOUT_SECONDS,
 							url: Efx.constants.CONTEXT_PATH + '/seguridad/usuario/updateUsuariosCombo',
@@ -185,7 +177,7 @@ SgdUsuarios = function(){
 									if(jsonObject && jsonObject.success){
 					    				if(jsonObject.sdgUsuariosCombo){
 						    				Efx.combos.initUsuarios(jsonObject.sdgUsuariosCombo || []);
-					    					Ext.getCmp("sgdUsuarioPadreId").store.loadData(Efx.combos.getAllUsuarios());
+					    					Ext.getCmp("userPadreId").store.loadData(Efx.combos.getAllUsuarios());
 					    				}
 									}else Efx.message.alertInvalid(jsonObject.message || Efx.constants.DEFAULT_ERROR_MESSAGE);
 								}
@@ -207,7 +199,7 @@ SgdUsuarios = function(){
 				defaults: {width: 800, margins: "5 0 5 0"},
 				items: [
 			       {
-						id: 'sgdUsuariosGrid',
+						id: 'usersGrid',
 						xtype: 'writergrid',
 						header:false,
 						height: 200,
@@ -215,7 +207,7 @@ SgdUsuarios = function(){
 						store:store
 					},{
 						xtype: "form",
-						id: "sgdUsuariosForm",
+						id: "usersForm",
 						activeRecord: null,
 						autoScroll: true,
 						flex: 1,
@@ -243,24 +235,24 @@ SgdUsuarios = function(){
 						},
 						tbar: [
 							{
-								id: "sgdUsuariosAgregar",
+								id: "usersAgregar",
 								iconCls:Efx.constants.icons.ADD_ICON,
 								text: "Agregar",
 								handler: function(){
 									Efx.form.switchButton(SgdUsuarios.buttonsConfig, "add");
-									Ext.getCmp("sgdUsuarioUsuario").setReadOnly(false);
+									Ext.getCmp("login").setReadOnly(false);
 						        }
 							},{
-								id: "sgdUsuariosEditar",
+								id: "usersEditar",
 								iconCls:Efx.constants.icons.EDIT_ICON,
 								text: "Editar Registro",
 								hidden: true,
 								handler: function(){
 									Efx.form.switchButton(SgdUsuarios.buttonsConfig, "edit");
-									Ext.getCmp("sgdUsuarioUsuario").setReadOnly(true);
+									Ext.getCmp("login").setReadOnly(true);
 								}
 							},{
-								id: "sgdUsuariosGuardar",
+								id: "usersGuardar",
 								iconCls:Efx.constants.icons.SAVE_ICON,
 								text: "Guardar",
 								hidden: true,
@@ -268,7 +260,7 @@ SgdUsuarios = function(){
 									SgdUsuarios.guardarDatos();
 								}
 							},{
-								id: "sgdUsuariosEliminar",
+								id: "usersEliminar",
 								iconCls:Efx.constants.icons.DELETE_ICON,
 								text: "Eliminar Registro",
 								hidden: true,
@@ -277,7 +269,7 @@ SgdUsuarios = function(){
 									SgdUsuarios.eliminarDatos();
 								}
 							},{
-								id: "sgdUsuariosCancelar",
+								id: "usersCancelar",
 								iconCls:Efx.constants.icons.CANCEL_ICON,
 								text: "Cancelar",
 								hidden: true,
@@ -287,36 +279,21 @@ SgdUsuarios = function(){
 							}
 			            ],
 						items:[
-							{xtype: "label", text: "Usuario", cls: "x-form-item label_spacing"},
-							{xtype: "label", text: "Usuario Padre", cls: "x-form-item label_spacing"},
+							{xtype: "label", text: "Usuario", cls: "x-form-item label_spacing", colspan: 4},
 							{
 							   xtype: "textfield",
-							   id: "sgdUsuarioUsuario",
-							   name: "sgdUsuario.sgdUsuarioUsuario",
+							   id: "login",
+							   name: "user.login",
 							   maxLength: 20,
-							   allowBlank: false
+							   allowBlank: false,
+							   colspan:  4
 							},
-							{
-					    	   xtype: "combo",
-					    	   store: new Ext.data.SimpleStore({
-					    		   data: Efx.combos.getAllUsuarios(),
-				    			   fields: ["usuarioId", "usuarioActivo", "usuarioDescripcion"]
-					    	   }),
-					    	   displayField: "usuarioDescripcion",
-					    	   valueField: "usuarioId",
-					    	   triggerAction: "all",
-					    	   mode: "local",
-					    	   id:"sgdUsuarioPadreId",
-					    	   name: "sgdUsuario.sgdUsuarioPadre.sgdUsuarioId"
-						    },
-
-
 							{xtype: "label", text: "Tipo Documento", cls: "x-form-item label_spacing"},
 							{xtype: "label", text: "C\u00e9dula", cls: "x-form-item label_spacing"},
 					        {
 								xtype: "combo",
 								id: "ctgTipoDocumentoId",
-								name: "sgdUsuario.ctgTipoDocumento.ctgCatalogoId",
+								name: "user.ctgTipoDocumento.ctgCatalogoId",
 								store: new Ext.data.SimpleStore({
 									data: SgdUsuarios.getCtgTipoDocumentos(),
 									fields: ["ctgTipoDocumentoId", "ctgTipoDocumentoNombre", "ctgTipoDocumentoPadre", "ctgTipoDocumentoHijo"]
@@ -329,32 +306,32 @@ SgdUsuarios = function(){
 									change : function() {
 										var valor = this.getValue();
 											if(valor == 293) {
-												Ext.getCmp("sgdUsuarioDocumento").vtype = "CedNac";
-												if(Ext.getCmp("sgdUsuarioDocumento").validate()){
-													Ext.getCmp("sgdUsuarioDocumento").clearInvalid();
+												Ext.getCmp("usuarioDocumento").vtype = "CedNac";
+												if(Ext.getCmp("usuarioDocumento").validate()){
+													Ext.getCmp("usuarioDocumento").clearInvalid();
 													return true;
 												}else{
-													Ext.getCmp("sgdUsuarioDocumento").markInvalid(Ext.getCmp("sgdUsuarioDocumento").blankText || 'Formato de c\u00e9dula inv\u00e1lido, el n\u00famero no debe iniciar con "0"');
+													Ext.getCmp("usuarioDocumento").markInvalid(Ext.getCmp("usuarioDocumento").blankText || 'Formato de c\u00e9dula inv\u00e1lido, el n\u00famero no debe iniciar con "0"');
 													return false;
 												}
 											}
 											else if (valor== 295){
-													Ext.getCmp("sgdUsuarioDocumento").vtype = "CedNac";
-													if(Ext.getCmp("sgdUsuarioDocumento").validate()){
-														Ext.getCmp("sgdUsuarioDocumento").clearInvalid();
+													Ext.getCmp("usuarioDocumento").vtype = "CedNac";
+													if(Ext.getCmp("usuarioDocumento").validate()){
+														Ext.getCmp("usuarioDocumento").clearInvalid();
 														return true;
 													}else{
-														Ext.getCmp("sgdUsuarioDocumento").markInvalid(Ext.getCmp("sgdUsuarioDocumento").blankText || 'Formato de c\u00e9dula inv\u00e1lido, el n\u00famero no debe iniciar con "0"');
+														Ext.getCmp("usuarioDocumento").markInvalid(Ext.getCmp("usuarioDocumento").blankText || 'Formato de c\u00e9dula inv\u00e1lido, el n\u00famero no debe iniciar con "0"');
 														return false;
 													}
 												}
 											else {
-												Ext.getCmp("sgdUsuarioDocumento").vtype = undefined;
-												if(Ext.getCmp("sgdUsuarioDocumento").validate()){
-													Ext.getCmp("sgdUsuarioDocumento").clearInvalid();
+												Ext.getCmp("usuarioDocumento").vtype = undefined;
+												if(Ext.getCmp("usuarioDocumento").validate()){
+													Ext.getCmp("usuarioDocumento").clearInvalid();
 													return true;
 												}else{
-													Ext.getCmp("sgdUsuarioDocumento").markInvalid(Ext.getCmp("sgdUsuarioDocumento").blankText || 'Formato de c\u00e9dula inv\u00e1lido, el n\u00famero no debe iniciar con "0"');
+													Ext.getCmp("usuarioDocumento").markInvalid(Ext.getCmp("usuarioDocumento").blankText || 'Formato de c\u00e9dula inv\u00e1lido, el n\u00famero no debe iniciar con "0"');
 													return false;
 												}
 												}
@@ -364,21 +341,21 @@ SgdUsuarios = function(){
 							},
 							{
 					    	   xtype: "textfield",
-					    	   id: "sgdUsuarioDocumento",
-					    	   name: "sgdUsuario.sgdUsuarioDocumento",
+					    	   id: "usuarioDocumento",
+					    	   name: "user.usuarioDocumento",
 					    	   maxLength: 20,
 					    	   allowBlank: false,
 					    	   listeners :  {
 									change : function() {
 										var valor = Ext.getCmp("ctgTipoDocumentoId").getValue();
 											if(valor == 293) {
-												Ext.getCmp("sgdUsuarioDocumento").vtype = "CedNac";
+												Ext.getCmp("usuarioDocumento").vtype = "CedNac";
 											}
 											else if (valor== 295){
-													Ext.getCmp("sgdUsuarioDocumento").vtype = "CedNac";
+													Ext.getCmp("usuarioDocumento").vtype = "CedNac";
 												}
 											else {
-												Ext.getCmp("sgdUsuarioDocumento").vtype = undefined;
+												Ext.getCmp("usuarioDocumento").vtype = undefined;
 												}
 
 										}
@@ -390,14 +367,14 @@ SgdUsuarios = function(){
 								xtype: "textfield",
 								inputType: 'password',
 								id: "pass1",
-								name: "sgdUsuario.sgdUsuarioClave",
+								name: "user.password",
 								minLength: 6,
 								maxLength: 9
 							},{
 							   xtype: "textfield",
 							   inputType: 'password',
 							   id: "pass2",
-							   name: "sgdUsuario.sgdUsuarioClave2",
+							   name: "user.password2",
 							   minLength: 6,
 							   maxLength: 9
 							},
@@ -406,7 +383,7 @@ SgdUsuarios = function(){
 					    	{
 					    	   xtype: "combo",
 					    	   id:"ctgTipoSucursalId",
-					    	   name: "sgdUsuario.ctgSucursal.ctgSubTipoSucursal.ctgTipoSucursal.ctgTipoSucursalId",
+					    	   name: "user.ctgSucursal.ctgSubTipoSucursal.ctgTipoSucursal.ctgTipoSucursalId",
 								store: new Ext.data.SimpleStore({
 									   data: Efx.combos.getAllTipoSucursalGrid(),
 									   fields: ["ctgTipoSucursalId", "ctgTipoSucursalNombre","ctgTipoSucursalActivo"]
@@ -429,7 +406,7 @@ SgdUsuarios = function(){
 						    {
 						    	xtype: "combo",
 						    	id:"ctgSubTipoSucursalId",
-						    	name: "sgdUsuario.ctgSucursal.ctgSubTipoSucursal.ctgSubTipoSucursalId",
+						    	name: "user.ctgSucursal.ctgSubTipoSucursal.ctgSubTipoSucursalId",
 								store: new Ext.data.SimpleStore({
 									autoLoad: false,
 									data: Efx.combos.getAllSubTipoSucursalByTipoSucursal(0),
@@ -452,7 +429,7 @@ SgdUsuarios = function(){
 						    {
 						    	xtype: "combo",
 						    	id:"ctgSucursalId",
-						    	name: "sgdUsuario.ctgSucursal.ctgSucursalId",
+						    	name: "user.ctgSucursal.ctgSucursalId",
 								store: new Ext.data.SimpleStore({
 									autoLoad: false,
 									data: Efx.combos.getAllSucursaleBySubTipoSucursal(0),
@@ -469,29 +446,29 @@ SgdUsuarios = function(){
 							{xtype: "label", text: "Segundo Nombre", cls: "x-form-item label_spacing"},
 							{
 					    	   xtype: "textfield",
-					    	   id: "sgdUsuarioPrimerNombre",
-					    	   name: "sgdUsuario.sgdUsuarioPrimerNombre",
+					    	   id: "usuarioPrimerNombre",
+					    	   name: "user.usuarioPrimerNombre",
 					    	   maxLength: 20,
 					    	   allowBlank: false
 					    	},
 					    	{
 					    	   xtype: "textfield",
-					    	   id: "sgdUsuarioSegundoNombre",
-					    	   name: "sgdUsuario.sgdUsuarioSegundoNombre",
+					    	   id: "usuarioSegundoNombre",
+					    	   name: "user.usuarioSegundoNombre",
 					    	   maxLength: 20
 					    	},
 							{xtype: "label", text: "Primer Apellido", cls: "x-form-item label_spacing"},
 							{xtype: "label", text: "Segundo Apellido", cls: "x-form-item label_spacing"},
 							{
 					    	   xtype: "textfield",
-					    	   id: "sgdUsuarioPrimerApellido",
-					    	   name: "sgdUsuario.sgdUsuarioPrimerApellido",
+					    	   id: "usuarioprimerApellido",
+					    	   name: "user.usuarioprimerApellido",
 					    	   maxLength: 20,
 					    	   allowBlank: false
 					    	},{
 					    	   xtype: "textfield",
-					    	   id: "sgdUsuarioSegundoApellido",
-					    	   name: "sgdUsuario.sgdUsuarioSegundoApellido",
+					    	   id: "usuarioSegundoApellido",
+					    	   name: "user.usuarioSegundoApellido",
 					    	   maxLength: 20
 					    	},
 //					    	{xtype: "label", text: "Sucursal", cls: "x-form-item label_spacing"},
@@ -508,7 +485,7 @@ SgdUsuarios = function(){
 //					    	   mode: "local",
 //					    	   id:"ctgSucursalId",
 //					    	   allowBlank: false,
-//					    	   name: "sgdUsuario.ctgSucursal.ctgSucursalId",
+//					    	   name: "user.ctgSucursal.ctgSucursalId",
 //					    	   width: 475,
 //					    	   colspan: 8
 //						    },
@@ -517,8 +494,8 @@ SgdUsuarios = function(){
 							{
 					    	   xtype: "textfield",
 					    	   vtype: 'email',
-					    	   id: "sgdUsuarioCorreoElectronico",
-					    	   name: "sgdUsuario.sgdUsuarioCorreoElectronico",
+					    	   id: "usuarioCorreoElectronico",
+					    	   name: "user.usuarioCorreoElectronico",
 					    	   fieldCls : "remove-uppercase",
 					    	   maxLength: 60,
 					    	   width: 475,
@@ -536,19 +513,19 @@ SgdUsuarios = function(){
 					    	   triggerAction: "all",
 					    	   mode: "local",
 					    	   allowBlank: false,
-					    	   id:"sgdUsuarioActivo",
-					    	   name: "sgdUsuario.sgdUsuarioActivo"
+					    	   id:"usuarioActivo",
+					    	   name: "user.usuarioActivo"
 						    },{
 							   xtype: "hidden",
-							   id: "sgdUsuarioId",
-							   name: "sgdUsuario.sgdUsuarioId"
+							   id: "id",
+							   name: "user.id"
 							},{
 							   xtype: "hidden",
-							   id: "sgdUsuarioClave",
+							   id: "password",
 							   name: "claveActual"
 							},{
 							   xtype: "hidden",
-							   name: "sgdUsuarioCambiarClave"
+							   name: "userCambiarClave"
 							}
 				        ]
 					}

@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.generico.dao.ctg.CtgCatalogoDao;
+import com.generico.dao.ctg.CtgSucursalDao;
 import com.generico.exception.AsiWebException;
 import com.main.dao.UserDAO;
 import com.main.service.UserService;
@@ -37,21 +39,27 @@ public class UsuarioController extends BaseController{
 		@Autowired
 		private UserService userService;
 		
+		@Autowired
+		private CtgSucursalDao ctgSucursalDao;
+		
+		@Autowired
+		private CtgCatalogoDao ctgCatalogoDao;
+		
 		@RequestMapping(value = "/view")
 		public String view(HttpServletRequest request, ModelMap model,HttpServletResponse response){
 			try {
 //				if(GenericoUtil.hasRole(GenericoUtil.ROLE_ADMINISTRADOR)){
-//					model.put("ctgTipoSucursal", JSONArray.fromObject(DBContext.getCtgSucursalDao().findTipoSucursalAllAsArray()));
-//					model.put("ctgSubTipoSucursal", JSONArray.fromObject(DBContext.getCtgSucursalDao().findAllSubTipoSucursalAllAsArray()));
-//					model.put("ctgSucursal", JSONArray.fromObject(DBContext.getCtgSucursalDao().findAllSucursalAllAsArray()));
+					GenericoUtil.hasRole("ROLE_ADMIN");
+					model.put("ctgTipoSucursal", JSONArray.fromObject(ctgSucursalDao.findTipoSucursalAllAsArray()));
+					model.put("ctgSubTipoSucursal", JSONArray.fromObject(ctgSucursalDao.findAllSubTipoSucursalAllAsArray()));
+					model.put("ctgSucursal", JSONArray.fromObject(ctgSucursalDao.findAllSucursalAllAsArray()));
 //				}
 //				else if(GenericoUtil.hasRole(GenericoUtil.ROLE_ADMINISTRADOR_EMPLEADOS)){
-//					model.put("ctgTipoSucursal", JSONArray.fromObject(DBContext.getCtgSucursalDao().findTipoSucursalByPrior()));
-//					model.put("ctgSubTipoSucursal", JSONArray.fromObject(DBContext.getCtgSucursalDao().findSubtipoSucursalesByPrior()));
-//					model.put("ctgSucursal", JSONArray.fromObject(DBContext.getCtgSucursalDao().findSucursalesByPrior()));
+//					model.put("ctgTipoSucursal", JSONArray.fromObject(ctgSucursalDao.findTipoSucursalByPrior()));
+//					model.put("ctgSubTipoSucursal", JSONArray.fromObject(ctgSucursalDao.findSubtipoSucursalesByPrior()));
+//					model.put("ctgSucursal", JSONArray.fromObject(ctgSucursalDao.findSucursalesByPrior()));
 //				}
-//				model.put("ctgTipoDocumentos", JSONArray.fromObject(DBContext.getCtgCatalogoDao().findAllActivesAsArray(GenericoUtil.CTG_TIPO_DOCUMENTO)));
-//				putUsuariosComboToMap(model);
+				model.put("ctgTipoDocumentos", JSONArray.fromObject(ctgCatalogoDao.findAllActivesAsArray(GenericoUtil.CTG_TIPO_DOCUMENTO)));
 			} catch (NumberFormatException e) {
 				logger.error("Exception: ", e);
 			} catch (Exception e) {
@@ -96,13 +104,13 @@ public class UsuarioController extends BaseController{
 		@RequestMapping(value = "/read")
 		@SuppressWarnings("unchecked")
 		public void read(HttpServletResponse response){
-//			try {
-//				List<Object[]> list = Collections.EMPTY_LIST;
-//				list = userRepository.getAllUsuarios();
-//				serialize(response, list);
-//			} catch (AsiWebException e) {
-//				error("Error leyendo registro(s)", "", response, e);
-//			}
+			try {
+				List<Object[]> list = Collections.EMPTY_LIST;
+				list = userRepository.getAllUsuarios();
+				serialize(response, list);
+			} catch (AsiWebException e) {
+				error("Error leyendo registro(s)", "", response, e);
+			}
 		}
 
 //		@SuppressWarnings("unchecked")
@@ -290,18 +298,6 @@ public class UsuarioController extends BaseController{
 //			}
 //			serializeObject(result, response);
 //		}
-//
-//		public void putUsuariosComboToMap(Map<String, Object> map) throws AsiWebException{
-//			if(GenericoUtil.hasRole(GenericoUtil.ROLE_ADMINISTRADOR)) map.put("sdgUsuariosCombo", JSONArray.fromObject(DBContext.getSgdUsuarioDao().findUsuarios()));
-//			else if(GenericoUtil.hasRole(GenericoUtil.ROLE_ADMINISTRADOR_EMPLEADOS)){
-//				List<Long> listIds = DBContext.getSgdUsuarioDao().findUsuariosIds(GenericoUtil.getSgdUsuarioIdFromAcegi());
-//				map.put("sdgUsuariosCombo", JSONArray.fromObject(DBContext.getSgdUsuarioDao().getAllUsuarios(listIds, true)));
-//			}
-//		}
-//	
-//	
-//	
-//	
-//	
+
 	
 }

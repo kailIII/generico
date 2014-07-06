@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<queries>
+	<query name="sgdUsuario.findSucursales">
+		<![CDATA[
+			SELECT DISTINCT USU.CTG_SUC_ID
+			FROM SGD_USUARIO USU
+				START WITH SGD_USU_ID = ?
+				CONNECT BY PRIOR SGD_USU_ID = SGD_USU_ID_PADRE
+		]]>
+	</query>
+</queries>

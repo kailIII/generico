@@ -3,6 +3,7 @@ package com.main.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,7 +21,7 @@ import com.main.java.User;
 
 
 	@Repository
-	public class UserDAOImpl /*extends BaseDaoImpl*/ implements UserDAO {
+	public class UserDAOImpl extends BaseDaoImpl implements UserDAO {
 
 		@Autowired
 		private SessionFactory sessionFactory;
@@ -58,27 +59,27 @@ import com.main.java.User;
 			sessionFactory.getCurrentSession().merge(user);
 		}
 		
-//		@SuppressWarnings("unchecked")
-//		public List<Object[]> getAllUsuarios() throws AsiWebException {
-//			DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
-//			criteria.setProjection(
-//					Projections.projectionList().
-//						add(Projections.property("id")).
-//						add(Projections.property("login")).
-//						add(Projections.property("password")).
-//						add(Projections.property("usuarioCambiarClave")).
-//						add(Projections.property("usuarioActivo")).
-//						add(Projections.property("usuarioPrimerNombre")).
-//						add(Projections.property("usuarioSegundoNombre")).
-//						add(Projections.property("usuarioprimerApellido")).
-//						add(Projections.property("usuarioSegundoApellido")).
-//						add(Projections.property("usuarioCorreoElectronico")).
-//						add(Projections.property("usuarioDocumento"))
-//					);
-//				criteria.add(Restrictions.ne("id", 0L));
-//				criteria.addOrder(Order.asc("login"));
-//
-//			return (List<Object[]>) findByCriteria(criteria);
-//		}
+		@SuppressWarnings("unchecked")
+		public List<Object[]> getAllUsuarios() throws AsiWebException {
+			Criteria criterias = openSession().getSessionFactory().getCurrentSession().createCriteria(User.class);
+			criterias.setProjection(
+					Projections.projectionList().
+						add(Projections.property("id")).
+						add(Projections.property("login")).
+						add(Projections.property("password")).
+						add(Projections.property("usuarioCambiarClave")).
+						add(Projections.property("usuarioActivo")).
+						add(Projections.property("usuarioPrimerNombre")).
+						add(Projections.property("usuarioSegundoNombre")).
+						add(Projections.property("usuarioprimerApellido")).
+						add(Projections.property("usuarioSegundoApellido")).
+						add(Projections.property("usuarioCorreoElectronico")).
+						add(Projections.property("usuarioDocumento"))
+					);
+			criterias.add(Restrictions.ne("id", 0));
+			criterias.addOrder(Order.asc("login"));
+
+			return (List<Object[]>) findByCriteria(criterias);
+		}
 
 }

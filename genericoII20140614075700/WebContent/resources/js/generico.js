@@ -35,7 +35,7 @@ Efx.constants.codes.PERSONA_JURIDICA = "00253";
 Efx.constants.codes.DOCUMENTO_CEDULA = "00293";
 Efx.constants.codes.COSTA_RICA = 44;
 //codigo de tipo de documento, cedula=293
-Efx.constants.codes.TIPO_DOCUMENTO_CEDULA = 293;
+Efx.constants.codes.TIPO_DOCUMENTO_CEDULA = 6;
 Efx.constants.codes.TIPO_DOCUMENTO_CEDULA_CEDULA_NACIONAL = 480;
 
 

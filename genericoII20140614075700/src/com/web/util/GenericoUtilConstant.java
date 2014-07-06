@@ -36,6 +36,7 @@ public class GenericoUtilConstant {
 	public static final String ERROR_DELETE_REFERENCIA = "Esta Referencia No puede ser Eliminada.";
 	public static final String ERROR_FOP = "DOCUMENTO NO DISPONIBLE";
 	public static final String SPACE = " ";
+	public static final String CTG_TIPO_DOCUMENTO = "00005";
 	static {
 		JSON_CONFIG.setJsonPropertyFilter(new PropertyFilter() {
 			@Override
