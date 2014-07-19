@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
 import com.generico.base.BaseDaoImpl;
 import com.generico.dto.ctg.CtgCatalogo;
 import com.generico.exception.AsiWebException;
+import com.web.util.JsonUtils;
 
 @Repository
 public class CtgCatalogoDaoImpl extends BaseDaoImpl implements CtgCatalogoDao {
@@ -146,6 +147,14 @@ public class CtgCatalogoDaoImpl extends BaseDaoImpl implements CtgCatalogoDao {
 			criteria.add(Restrictions.eq("ctgCatalogoActivo", "1"));
 		return (List<Object[]>) findByCriteria(criteria);
 	}
+	
+	public void deleteAl(List<?> objectList) throws AsiWebException{
+		deleteAll(objectList);
+	}
 
-
+	public List<?> saveOrUpdatee(String data, Class<?> clazz) throws AsiWebException {
+        List<?> list = JsonUtils.getObjectsFromRequest(data, clazz);
+        saveOrUpdateAll(list);
+        return list;
+	}
 }

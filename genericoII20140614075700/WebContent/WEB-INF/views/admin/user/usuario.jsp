@@ -15,9 +15,9 @@
 				Efx.combos.initSubTipoSucursalGrid(<c:out value="${ctgSubTipoSucursal}" default="[]" escapeXml="false" />);
 				Efx.combos.initSucursalGrid(<c:out value="${ctgSucursal}" default="[]" escapeXml="false" />);
 
-				SgdUsuarios.setCtgTipoDocumentos(<c:out value="${ctgTipoDocumentos}" default="[]" escapeXml="false" />);
+				Usuarios.setCtgTipoDocumentos(<c:out value="${ctgTipoDocumentos}" default="[]" escapeXml="false" />);
 
-				EfxViewport.init(SgdUsuarios.init(<c:out value="${sgdUsuarios}" default="[]" escapeXml="false" />));
+				EfxViewport.init(Usuarios.init(<c:out value="${user}" default="[]" escapeXml="false" />));
 				Efx.form.setDisable("sgdUsuariosForm");
 			});
 		</script>

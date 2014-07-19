@@ -30,5 +30,8 @@ public interface CtgCatalogoDao {
 
 	public List<Object[]> findAllAsArrayByPadre(String ctgCatalogoPadre)
 			throws AsiWebException;
-
+	
+	public void deleteAl(List<?> objectList) throws AsiWebException;
+	
+	public List<?> saveOrUpdatee(String data, Class<?> clazz) throws AsiWebException;
 }

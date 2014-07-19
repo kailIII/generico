@@ -80,7 +80,7 @@ CtgCatalogo = function(){
 								},
 								draggable: false
 							},
-							{
+							/*{
 								header: 'Puntaje',
 								//flex: 1,
 								fieldCls: "number-field",
@@ -105,7 +105,7 @@ CtgCatalogo = function(){
 									allowBlank: false,
 								},
 								draggable: false
-							},
+							},*/
 							{
 								header: 'Activo?',
 								align:'center',
@@ -142,8 +142,8 @@ CtgCatalogo = function(){
 					var rec = new CtgCatalogo({
 						ctgCatalogoPadre: idCtg,
 						ctgCatalogoNombre: '',
-						ctgCatalogoPuntaje : '',
-						ctgCatalogoActivo: true
+//						ctgCatalogoDetallar : '',
+						ctgCatalogoActivo: '1'
 					}), edit = this.editing;
 					edit.cancelEdit();
 					this.store.insert(0, rec);
@@ -175,8 +175,8 @@ CtgCatalogo = function(){
 					{name: 'ctgCatalogoPadre'},
 					{name: 'ctgCatalogoHijo'},
 					{name: 'ctgCatalogoNombre', type: 'string'},
-					{name : 'ctgCatalogoPuntaje', type:'string'},
-					{name: 'ctgCatalogoActivo', type:'bool'}
+					{name : 'ctgCatalogoDetallar', type:'string'},
+					{name: 'ctgCatalogoActivo', type:'string'}
 				],
 				validations:[
 		            {type: 'presence',  field: 'ctgCatalogoNombre'}

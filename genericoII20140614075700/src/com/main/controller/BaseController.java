@@ -13,6 +13,7 @@ import net.sf.json.JSONObject;
 
  import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
@@ -20,12 +21,16 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.generico.base.BaseDao;
+import com.generico.base.BaseDaoImpl;
+import com.generico.exception.AsiWebException;
 import com.web.util.GenericoJsonUtils;
+import com.web.util.JsonUtils;
 
 
  @Controller
  @RequestMapping("/")
- public class BaseController {
+ public class BaseController{
  	public static final Logger logger = Logger.getLogger(BaseController.class);
  	public static final String SUCCESS = "success";
  	public static final String FAILURE = "failure";
@@ -33,6 +38,8 @@ import com.web.util.GenericoJsonUtils;
  	public static final String MESSAGE = "message";
  	public static final String ERROR_MESSAGE = "errorMessage";
  	public static final String SUCCESS_MESSAGE = "message";
+ 	
+ 	
 
  	public String _() {
  		return "security/login";
@@ -95,4 +102,5 @@ import com.web.util.GenericoJsonUtils;
          List<?> list = GenericoJsonUtils.getObjectsFromRequest(data, clazz);
          return list;
  	}
+ 	
  }

@@ -1,4 +1,3 @@
-
 package com.web.util;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -37,6 +36,7 @@ public class GenericoUtilConstant {
 	public static final String ERROR_FOP = "DOCUMENTO NO DISPONIBLE";
 	public static final String SPACE = " ";
 	public static final String CTG_TIPO_DOCUMENTO = "00005";
+	public static final Integer ROL_EMPLEADO = 3;
 	static {
 		JSON_CONFIG.setJsonPropertyFilter(new PropertyFilter() {
 			@Override

@@ -6,14 +6,19 @@ package com.main.java;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.generico.dto.ctg.CtgCatalogo;
+import com.generico.dto.ctg.CtgSucursal;
 
 @Entity
 @Table(name = "users")
@@ -43,6 +48,12 @@ public class User {
 	private String usuarioCorreoElectronico;
 	@Column(name = "usu_documento", nullable = true, length = 20)
 	private String usuarioDocumento;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ctg_suc_id", nullable = false)
+	private CtgSucursal ctgSucursales;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ctg_tdoc_id", nullable = false)
+	private CtgCatalogo ctgTipoDocumento;
 	
 	@OneToOne(cascade=CascadeType.ALL)
     @JoinTable(name="user_roles",
@@ -145,8 +156,22 @@ public class User {
 
 	public void setUsuarioDocumento(String usuarioDocumento) {
 		this.usuarioDocumento = usuarioDocumento;
-	}  
-    
-    
-	
+	}
+
+	public CtgSucursal getCtgSucursales() {
+		return ctgSucursales;
+	}
+
+	public void setCtgSucursales(CtgSucursal ctgSucursales) {
+		this.ctgSucursales = ctgSucursales;
+	}
+
+	public CtgCatalogo getCtgTipoDocumento() {
+		return ctgTipoDocumento;
+	}
+
+	public void setCtgTipoDocumento(CtgCatalogo ctgTipoDocumento) {
+		this.ctgTipoDocumento = ctgTipoDocumento;
+	}
+
 }

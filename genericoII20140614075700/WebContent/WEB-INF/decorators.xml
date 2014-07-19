@@ -12,7 +12,9 @@
     </decorator>
     <decorator name="administracion" page="adminDecorator.jsp">
     	<pattern>/admin*</pattern>
+<!--     	<pattern>/admin/*</pattern> -->
 		<pattern>/seguridad/*</pattern>
 		<pattern>/sucursal/*</pattern>
+		<pattern>/catalogo/*</pattern>
 	</decorator>
 </decorators>

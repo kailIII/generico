@@ -7,7 +7,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -16,8 +15,8 @@ import org.springframework.stereotype.Repository;
 
 import com.generico.base.BaseDaoImpl;
 import com.generico.exception.AsiWebException;
-import com.main.java.Producto;
 import com.main.java.User;
+import com.main.java.UserRoles;
 
 
 	@Repository
@@ -62,7 +61,12 @@ import com.main.java.User;
 		@SuppressWarnings("unchecked")
 		public List<Object[]> getAllUsuarios() throws AsiWebException {
 			Criteria criterias = openSession().getSessionFactory().getCurrentSession().createCriteria(User.class);
-			criterias.setProjection(
+			criterias.createAlias("ctgSucursales", "ctgSucursales");
+			criterias.createAlias("ctgSucursales.ctgSubTipoSucursal", "ctgSubTipoSucursal");
+			criterias.createAlias("ctgSubTipoSucursal.ctgTipoSucursal", "ctgTipoSucursal");
+			criterias.createAlias("ctgTipoDocumento", "ctgTipoDocumento");
+			
+			criterias.setProjection(Projections.distinct(
 					Projections.projectionList().
 						add(Projections.property("id")).
 						add(Projections.property("login")).
@@ -74,12 +78,89 @@ import com.main.java.User;
 						add(Projections.property("usuarioprimerApellido")).
 						add(Projections.property("usuarioSegundoApellido")).
 						add(Projections.property("usuarioCorreoElectronico")).
-						add(Projections.property("usuarioDocumento"))
-					);
+						add(Projections.property("usuarioDocumento")).
+						add(Projections.property("ctgSucursales.ctgSucursalId")).
+						add(Projections.property("ctgSucursales.ctgSucursalNombre")).
+						add(Projections.property("ctgSubTipoSucursal.ctgSubTipoSucursalId")).
+						add(Projections.property("ctgTipoSucursal.ctgTipoSucursalId")).
+						add(Projections.property("ctgTipoDocumento.ctgCatalogoId"))
+					));
 			criterias.add(Restrictions.ne("id", 0));
 			criterias.addOrder(Order.asc("login"));
 
 			return (List<Object[]>) findByCriteria(criterias);
 		}
+		
+		@SuppressWarnings("unchecked")
+		public int findUserByUsuario(String usuario) throws AsiWebException
+		{
+			Criteria criteria = openSession().getSessionFactory().getCurrentSession().createCriteria(User.class);
+			criteria.add(Restrictions.eq("login", usuario));
+			List<Object[]> items = (List<Object[]>) findByCriteria(criteria);
 
+			return items.size();
+		}
+
+		public void saveUsuario (Object object) throws AsiWebException{
+			save(object);
+		}
+		
+		public void updateUsuario (Object object) throws AsiWebException{
+			update(object);
+		}
+		
+		public void deleteUsuario (Object object) throws AsiWebException{
+			delete(object);
+		}
+		
+		@SuppressWarnings("unchecked")
+		public List<Object[]> findAllUsuariosRoles() throws AsiWebException {
+			Criteria criteria = openSession().getSessionFactory().getCurrentSession().createCriteria(UserRoles.class);
+			criteria.setProjection(
+				Projections.projectionList()
+					.add(Projections.property("users.id"))
+					.add(Projections.property("roles.id"))
+			);
+			criteria.addOrder(Order.asc("users.id"));
+			criteria.addOrder(Order.asc("roles.id"));
+			List<Object[]> items = (List<Object[]>) findByCriteria(criteria);
+			return items;
+		}
+		
+		@SuppressWarnings("unchecked")
+		public List<Object[]> getAllActivesUsuarios() throws AsiWebException {
+			Criteria criteria = openSession().getSessionFactory().getCurrentSession().createCriteria(User.class);
+			criteria.createAlias("ctgSucursales", "ctgSucursal");
+			criteria.setProjection(Projections.distinct(
+					Projections.projectionList().
+					add(Projections.property("id")).
+					add(Projections.property("usuarioActivo")).
+					add(Projections.property("login")).
+					add(Projections.property("password")).
+					add(Projections.property("usuarioPrimerNombre")).
+					add(Projections.property("usuarioSegundoNombre")).
+					add(Projections.property("usuarioprimerApellido")).
+					add(Projections.property("usuarioSegundoApellido")).
+					add(Projections.property("usuarioCorreoElectronico")).
+//					add(Projections.property("sgdUsuarioPadre.sgdUsuarioId")).
+					add(Projections.property("ctgSucursal.ctgSucursalId")).
+					add(Projections.property("ctgSucursal.ctgSucursalNombre")).
+					add(Projections.property("usuarioCambiarClave")).
+					add(Projections.property("usuarioDocumento")).
+					add(Projections.property("ctgTipoDocumento.ctgCatalogoId"))
+			));
+			criteria.add(Restrictions.eq("usuarioActivo", "1"));
+			criteria.addOrder(Order.asc("login"));
+
+			return (List<Object[]>) findByCriteria(criteria);
+		}
+		
+		@SuppressWarnings("unchecked")
+		public List<Object[]> findByProp(Class<?> entityClass, String entityProperty, Object entityValue) throws AsiWebException{
+			return (List<Object[]>) findByProperty(entityClass, entityProperty, entityValue);
+		}
+		
+		public void deleteAl(List<?> objectList) throws AsiWebException {
+			deleteAll(objectList);
+		}
 }

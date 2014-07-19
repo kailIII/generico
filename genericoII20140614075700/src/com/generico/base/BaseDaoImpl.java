@@ -31,6 +31,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ReflectionUtils;
 
+import com.generico.dto.ctg.CtgCatalogo;
 import com.generico.exception.AsiWebException;
 import com.generico.web.annotation.GenericoClassJsonProperty;
 import com.generico.web.annotation.GenericoFormatDate;
@@ -64,8 +65,24 @@ public class BaseDaoImpl /*extends HibernateDaoSupport*/ implements BaseDao{
 		@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false, rollbackFor = {
 				Exception.class, AsiWebException.class })
 		private void trx(Object object, String operation) throws AsiWebException {
-			try { 
+			try {
+				 logger.info("Procediendo a ejecutar transaccion (" + operation +
+				 ") en: " + object.getClass().getSimpleName() + "...");
+				GenericoUtil.preProcessBeforeSaveOrUpdate(object, openSession().getSessionFactory());
 				if ("save".equals(operation)) {
+					
+					if (object instanceof CtgCatalogo) {
+						CtgCatalogo ctgCatalogo = (CtgCatalogo) object;
+						if (ctgCatalogo.getCtgCatalogoId() == null) {
+							ctgCatalogo.setCtgCatalogoHijo("00000");
+							openSession().getSessionFactory().getCurrentSession().save(ctgCatalogo);
+							ctgCatalogo.setCtgCatalogoHijo(StringUtils.leftPad(
+									ctgCatalogo.getCtgCatalogoId().toString(), 5,
+									"0"));
+						}
+						openSession().getSessionFactory().getCurrentSession().saveOrUpdate(ctgCatalogo);
+					}
+					else
 						openSession().getSessionFactory().getCurrentSession().saveOrUpdate(object);
 //						getHibernateTemplate().saveOrUpdate(object);
 				} else if ("update".equals(operation))

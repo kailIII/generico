@@ -1,40 +1,64 @@
-SgdUsuarioRol = function(){
+UsuarioRol = function(){
 	return {
 		init: function(json){
 			Efx.combos.initUsuarioRoles(json.jsonString);
 			var config = {};
 
-			Ext.define('SgdUsuario', {
+			Ext.define('UsuarioModel', {
 				extend: 'Ext.data.Model',
-				idProperty: 'sgdUsuarioId',
+				idProperty: 'id',
 				fields: [
-				    {name: "sgdUsuarioId"},
+				         /**
+				    {name: "id"},
 			    	{name: "sgdUsuarioActivo"},
-					{name: "sgdUsuarioUsuario"},
+					{name: "login"},
 		    		{name: "sgdUsuarioClave"},
-					{name: "sgdUsuarioPrimerNombre"},
-	    			{name: "sgdUsuarioSegundoNombre"},
-					{name: "sgdUsuarioPrimerApellido"},
-					{name: "sgdUsuarioSegundoApellido"},
-					{name: "sgdUsuarioCorreoElectronico"},
-					{name: "sgdUsuarioPadreId"},
+					{name: "usuarioPrimerNombre"},
+	    			{name: "usuarioSegundoNombre"},
+					{name: "usuarioprimerApellido"},
+					{name: "usuarioSegundoApellido"},
+					{name: "usuarioCorreoElectronico"},
+//					{name: "sgdUsuarioPadreId"},
 					{name: "ctgSucursalId"},
 					{name: "ctgSucursalNombre"},
-					{name: "sgdUsuarioEjecutivo"},
-					{name: "sgdUsuarioCambiarClave"},
+//					{name: "sgdUsuarioEjecutivo"},
+					{name: "usuarioCambiarClave"},
 					{name: "ctgSucursal"},
 					{name: "sgdUsuarioPadre"}
+					**/
+				         
+					{name: "id"},
+					{name: "usuarioActivo"},
+					{name: "login"},
+					{name: "password"},
+					{name: "usuarioPrimerNombre"},
+					{name: "usuarioSegundoNombre"},
+					{name: "usuarioprimerApellido"},
+					{name: "usuarioSegundoApellido"},
+					{name: "usuarioCorreoElectronico"},
+					//{name: "sgdUsuarioPadre.id"},
+					{name: "ctgSucursalId"},
+					{name: "ctgSucursalNombre"},
+					{name: "usuarioCambiarClave"}
+//					{name: "usuarioDocumento"},
+//					{name: "ctgTipoDocumento.ctgCatalogoId"}
+					
 				]
 			});
 
 			Ext.define('CtgRoles', {
 				extend: 'Ext.data.Model',
-				idProperty: 'ctgCatalogoId'
+				idProperty: 'roleId',
+				fields: [
+				         {name: "roleId"},
+				         {name: "role"},
+				         {name: "roleActivo"}
+				         ]
 			});
 
-			var storeUsuarios = Ext.create('Ext.data.Store', {model: 'SgdUsuario', groupers: [{property: "ctgSucursalNombre"}]});
+			var storeUsuarios = Ext.create('Ext.data.Store', {model: 'UsuarioModel', groupers: [{property: "ctgSucursalNombre"}]});
 
-			var storeRoles = Ext.create('Ext.data.Store', {model: 'CtgRoles', sorters: [{property: "ctgCatalogoNombre", order: "ASC"}]});
+			var storeRoles = Ext.create('Ext.data.Store', {model: 'CtgRoles', sorters: [{property: "role", order: "ASC"}]});
 
 			var gridUsuarios = Ext.create('Ext.grid.Panel',{
 				id: 'gridUsuarios',
@@ -44,17 +68,17 @@ SgdUsuarioRol = function(){
 				frame:true,
 				bodyCls:'bgGray',
 				columns: [
-					{header: 'Id', dataIndex: 'sgdUsuarioId', hidden: true},
+					{header: 'Id', dataIndex: 'id', hidden: true},
 					{xtype:"rownumberer",sortable:false,width:30},
-					{header: 'Usuario', dataIndex: 'sgdUsuarioUsuario', sortable: true, fixed: true, width:150},
+					{header: 'Usuario', dataIndex: 'login', sortable: true, fixed: true, width:150},
 					{
-						header: 'Nombre', dataIndex: 'sgdUsuarioPrimerNombre', sortable: true, fixed: true, flex:1,
+						header: 'Nombre', dataIndex: 'usuarioPrimerNombre', sortable: true, fixed: true, flex:1,
 						renderer: function(a,b,o){
 							o = o.data;
-							return o.sgdUsuarioPrimerNombre +
-							(o.sgdUsuarioSegundoNombre? " "+o.sgdUsuarioSegundoNombre: "") +
-							" "+o.sgdUsuarioPrimerApellido +
-							(o.sgdUsuarioSegundoApellido? " "+o.sgdUsuarioSegundoApellido: "");
+							return o.usuarioPrimerNombre +
+							(o.usuarioSegundoNombre? " "+o.usuarioSegundoNombre: "") +
+							" "+o.usuarioprimerApellido +
+							(o.usuarioSegundoApellido? " "+o.usuarioSegundoApellido: "");
 						}
 					}
 				],
@@ -67,12 +91,12 @@ SgdUsuarioRol = function(){
 					selectionchange: function(g, s, o){
 						if(s[0]){
 							btnGuardar.enable();
-							var changeChecks = Efx.combos.getUsuarioRolesBySgdUsuarioId(s[0].data.sgdUsuarioId);
+							var changeChecks = Efx.combos.getUsuarioRolesBySgdUsuarioId(s[0].data.id);
 							var roles = json.roles;
-							Ext.each(roles, function(o){o.data.ctgCatalogoActivo = false;});
+							Ext.each(roles, function(o){o.data.roleActivo = false;});
 							Ext.each(roles, function(o){
 								Ext.each(changeChecks, function(i){
-									if(i.rolId == o.data.ctgCatalogoId) o.data.ctgCatalogoActivo = true;
+									if(i.rolId == o.data.roleId) o.data.roleActivo = true;
 								});
 							});
 							storeRoles.loadData(roles);
@@ -89,25 +113,25 @@ SgdUsuarioRol = function(){
 				frame:true,
 				title: "Permisos",
 				columns: [
-					{header: 'Id', dataIndex: 'ctgCatalogoId', hidden: true},
+					{header: 'Id', dataIndex: 'roleId', hidden: true},
 					{xtype:"rownumberer",sortable:false,width:30},
 					{
 						header: '',
-						dataIndex: 'ctgCatalogoActivo',
+						dataIndex: 'roleActivo',
 						width: 30,
 						xtype:'checkcolumn',
 						draggable: false,
 						sortable: false,
 						menuDisabled: true
 					},
-					{header: 'Rol', dataIndex: 'ctgCatalogoNombre', sortable: true, draggable: false, menuDisabled: true, flex:1}
+					{header: 'Rol', dataIndex: 'role', sortable: true, draggable: false, menuDisabled: true, flex:1}
 				]
 			});
 
 			var getRolesChecked = function(){
 				var cheked = [];
 				Ext.each(storeRoles.data.items, function(o){
-					if(o.data.ctgCatalogoActivo) cheked.push(o.data.ctgCatalogoId);
+					if(o.data.roleActivo) cheked.push(o.data.roleId);
 				});
 				return cheked;
 			};
@@ -115,7 +139,7 @@ SgdUsuarioRol = function(){
 			var onSaveChange = function(){
 				var sm = gridUsuarios.getView().getSelectionModel();
 				if(sm.getSelection()[0]){
-					var usrId = sm.getSelection()[0].data.sgdUsuarioId;;
+					var usrId = sm.getSelection()[0].data.id;;
 					var rolesCheked = getRolesChecked();
 					Ext.Ajax.request({
 						timeout: Efx.constants.TIMEOUT_SECONDS,
@@ -135,7 +159,7 @@ SgdUsuarioRol = function(){
 									gridUsuarios.getView().refresh();
 									gridRoles.getView().getSelectionModel().clearSelections();
 									gridRoles.getView().refresh();
-									Ext.each(storeRoles.data.items, function(o){o.data.ctgCatalogoActivo = false;});
+									Ext.each(storeRoles.data.items, function(o){o.data.roleActivo = false;});
 									gridRoles.getView().refresh();
 								}else{
 									Efx.message.alertInvalid(jsonObject ? (jsonObject.message || Efx.constants.DEFAULT_ERROR_MESSAGE) : Efx.constants.DEFAULT_ERROR_MESSAGE);
@@ -179,7 +203,7 @@ SgdUsuarioRol = function(){
 
 			config.items = items;
 
-			Ext.each(json.roles, function(o){o.ctgCatalogoActivo = false;});
+			Ext.each(json.roles, function(o){o.roleActivo = false;});
 
 			storeRoles.loadData(json.roles);
 			storeUsuarios.loadData(json.usuarios);

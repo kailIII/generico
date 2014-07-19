@@ -113,88 +113,18 @@ EfxViewport = function(){
 														leaf: true,
 														itemUrl: "seguridad/usuario/view"
 													},
-//    	            	            	            {
-//    	            	            	            	text: "ASIGNACI\u00D3N DE PERMISOS",
-//    	            	            	            	leaf: true,
-//    	            	            	            	itemUrl: "seguridad/rol"
-//    	            	            	            },
+    	            	            	            {
+    	            	            	            	text: "ASIGNACI\u00D3N DE PERMISOS",
+    	            	            	            	leaf: true,
+    	            	            	            	itemUrl: "seguridad/rol"
+    	            	            	            },
     	            	            	            {
     	                	                    	   text: "SUCURSALES",
     	                	                    	   leaf: true,
     	                	                    	   itemUrl: "sucursal/view"
     	                	                       }
-//    	                	                       {
-//    	                	                    	   text: "NOTIFICACIONES",
-//    	                	                    	   leaf: true,
-//    	                	                    	   itemUrl: "notificacion/view"
-//    	                	                       }
 	            	            	             ]
-	        	            	             },
-	        	            	             {
-	 											text: "MATRICES CALIFICADORES",
-												expanded: true,
-											    children: [
-											        {
-											        	text:"MATRIZ GLOBAL",
-											        	leaf: true,
-											        	itemUrl: "admin/matriz/view"
-													},{
-											        	text:"MATRIZ CALIFICACI\u00F3N",
-											        	leaf: true,
-											        	itemUrl: "admin/puntuacion/view",
-											        	itemUrlParams: {
-											        		ctgCatalogoCodigo: "00299",
-											        		tipo: "4",
-											        		min: Efx.constants.limiteMinimo,
-											        		max: Efx.constants.limiteMaximo,
-											        		sum: 1
-											        	}
-													},{
-														   text :"FACTORES DE RIESGO",
-														   expanded: true,
-														   children : [
-
-														       {
-															   text: "TIPO DE PERSONA",
-															   leaf: true,
-															   itemUrl: "catalogo/view",
-															   itemUrlParams: {
-																   ctgCatalogoCodigo: "00256",
-																   ctgCodigo :"1"
-															   }
-														   },
-												   {
-													   text :"ESTIMACI\u00d3N DE INGRESOS",
-													   expanded: true,
-													   children : [
-														   {
-													        	text:"ESTIMACI\u00F3N DE INGRESOS",
-													        	leaf: true,
-													        	itemUrl: "catalogo/view",
-													        	itemUrlParams: {
-													        		ctgCatalogoCodigo: "01262",
-													        		ctgCodigo: "1"
-													        	}
-															}
-
-														       ]
-														   }
-														 ]
-													},{
-	    	                	                    	   text: "PAIS",
-	    	                	                    	   expanded: true,
-	    	                	                    	   children: [
-	    	                	                       {
-	    	                	                    	   text: "NACIONALIDAD",
-	    	                	                    	   leaf: true,
-	    	                	                    	   itemUrl: "nacionalidad/view",
-	    	                	                    	   itemUrlParams: {
-	    	                	                    		tipo: "1",
-	    	                	                    		ctgCatalogoCodigo: "00302"
-	    	                	                    	   }
-	    	                	                       }]}
-
-											        ]}
+	        	            	             }
         	            	             ]
 		        	                 },{
 		        	                	 text: "CAT\u00C1LOGOS",
@@ -205,36 +135,15 @@ EfxViewport = function(){
 	        	                	            expanded: true,
 	        	                	            children: [
     	                	                       {
-    	                	                    	   text: "DISTRIBUCI\u00D3N TERRITORIAL",
+    	                	                    	   text: "TIPO DE DOCUMENTOS",
     	                	                    	   leaf: true,
-    	                	                    	   itemUrl: "distribucion/view"
+    	                	                    	   itemUrl: "catalogo/view",
+    	                	                    	   itemUrlParams: {
+    	                	                    		   ctgCatalogoCodigo: "00005"
+    	                	                    	   }
     	                	                       }
 	                	                        ]
-        	                	            },{
-	       		        	                	 text: "CITIBANK",
-	    		        	                	 expanded: true,
-	    		        	                	 children: [
-													/*	{
-														text: "FACTORES DE RIESGO",
-														leaf: true,
-														itemUrl: "porcentajeFactorRiesgo/view",
-														},*/
-													{
-														text:"PERSONA F\u00cdSICA",
-															expanded :true,
-															children :[
-															 {
-	    	    	                	                    	   text: "TIPO DE DOCUMENTOS",
-	    	    	                	                    	   leaf: true,
-	    	    	                	                    	   itemUrl: "catalogo/view",
-	    	    	                	                    	   itemUrlParams: {
-	    	    	                	                    		   ctgCatalogoCodigo: "00294"
-	    	    	                	                    	   }
-	    	    	                	                       }
-														]
-													}
-	        	                	             ]
-	    		        	                 }
+        	                	            }
     	                	             ]
 		        	                 }
 		        	              ]

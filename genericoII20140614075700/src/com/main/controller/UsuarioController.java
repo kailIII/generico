@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.generico.dao.ctg.CtgCatalogoDao;
 import com.generico.dao.ctg.CtgSucursalDao;
 import com.generico.exception.AsiWebException;
+import com.main.dao.RoleDAO;
 import com.main.dao.UserDAO;
+import com.main.java.User;
+import com.main.java.UserRoles;
 import com.main.service.UserService;
 import com.web.util.GenericoUtil;
 
@@ -44,6 +48,9 @@ public class UsuarioController extends BaseController{
 		
 		@Autowired
 		private CtgCatalogoDao ctgCatalogoDao;
+		
+		@Autowired
+		private RoleDAO roleDAO;
 		
 		@RequestMapping(value = "/view")
 		public String view(HttpServletRequest request, ModelMap model,HttpServletResponse response){
@@ -145,99 +152,75 @@ public class UsuarioController extends BaseController{
 			if (list != null && list.size() > 0) serializeString(JSONArray.fromObject(list).toString(), response);
 			else serializeString("[]", response);
 		}
-//
-//		@RequestMapping(value = "/save")
-//		public void create(HttpServletRequest request, HttpServletResponse response, ModelMap model,
-//				@ModelAttribute("sgdUsuario") SgdUsuario sgdUsuario){
-//			Map<String, Object> result = new HashMap<String, Object>();
-//			String mensaje="";
-//			try {
-//			    if(sgdUsuario.getSgdUsuarioId() != null && sgdUsuario.getSgdUsuarioId() > 0){//update
-//					if(!sgdUsuario.getSgdUsuarioClave().isEmpty()){
-//						sgdUsuario.setSgdUsuarioCambiarClave("1");
-//						sgdUsuario.setSgdUsuarioClave(GenericoUtil.getHashedString(sgdUsuario.getSgdUsuarioClave(),sgdUsuario.getSgdUsuarioUsuario().toUpperCase()));
-//					}else{
-//						if(!"1".equals(sgdUsuario.getSgdUsuarioCambiarClave())) sgdUsuario.setSgdUsuarioCambiarClave("0");
-//						if(request.getParameter("claveActual").toString()!=null)
-//							sgdUsuario.setSgdUsuarioClave(request.getParameter("claveActual").toString());
-//					}
-//					//Buscando Hijos para no poder asignarlo.
-//					List<SgdUsuario> usersChildren = DBContext.getSgdUsuarioDao().getChildrenUsers(sgdUsuario.getSgdUsuarioId());
-//					List<Long> listaUserId2 = new ArrayList<Long>();
-//					for( SgdUsuario u : usersChildren ) {
-//					    listaUserId2.add(u.getSgdUsuarioId());
-//					    buscarRecursivaId(u.getSgdUsuarioId(),listaUserId2);
-//				    }
-//					int padreExiste=0;
-//					for (Long o: listaUserId2 ){
-//						if(sgdUsuario.getSgdUsuarioPadre()!=null)
-//							if(o.equals(sgdUsuario.getSgdUsuarioPadre().getSgdUsuarioId()))
-//								padreExiste=1;
-//					}
-//					if(padreExiste == 0){
-//						getBaseDao().update(sgdUsuario);
-//						mensaje="Usuario Actualizado";
-//					}
-//					else
-//						mensaje="El Usuario Padre No Puede ser Asigando.";
-//				}
-//				else if(DBContext.getSgdUsuarioDao().findUserByUsuario(sgdUsuario.getSgdUsuarioUsuario().toUpperCase()) == 0){//verificando si ya existe
-//						sgdUsuario.setSgdUsuarioCambiarClave("1");
-//						sgdUsuario.setSgdUsuarioClave(GenericoUtil.getHashedString(sgdUsuario.getSgdUsuarioClave(),sgdUsuario.getSgdUsuarioUsuario().toUpperCase()));
-//						getBaseDao().save(sgdUsuario);
-//						SgdUsuarioRol sgdUsuarioRol = new SgdUsuarioRol();
-//						sgdUsuarioRol.setSgdUsuario(sgdUsuario);
-//						sgdUsuarioRol.setSgdRol((CtgCatalogo) DBContext.getCtgCatalogoDao().findByCodigo(GenericoUtil.ROLE_USUARIO_CODIGO));
-//						getBaseDao().save(sgdUsuarioRol);
-//
-//						mensaje="Usuario Ingresado";
-//				}
-//				else mensaje="El Usuario Ingresado Ya existe.";
-//
-//			    putUsuariosComboToMap(result);
-//				result.put(MESSAGE, mensaje);
-//				result.put(SUCCESS, true);
-//			}
-//			catch (AsiWebException e) {
-//				result.put(FAILURE, true);
-//				result.put(MESSAGE, GenericoUtil.getExceptionMessage(e));
-//				logger.error(e, e);
-//			}catch (Exception e) {
-//				result.put(FAILURE, true);
-//				result.put(MESSAGE, GenericoUtil.ERROR_MESSAGE);
-//				logger.error(e, e);
-//				e.printStackTrace();
-//			}
-//			serializeObject(result, response);
-//		}
-//
-//		@RequestMapping(value = "/delete")
-//		public void update(HttpServletRequest request, HttpServletResponse response,ModelMap model,
-//				@ModelAttribute("sgdUsuario") SgdUsuario sgdUsuario){
-//			Map<String, Object> result = new HashMap<String, Object>();
-//			try {
-//				List<SgdUsuario> usersChildren = DBContext.getSgdUsuarioDao().getChildrenUsers(sgdUsuario.getSgdUsuarioId());
-//				if(usersChildren.size() == 0){
-//					getBaseDao().deleteAll(DBContext.getSgdUsuarioDao().getRolesOfUser(sgdUsuario));
-//					getBaseDao().delete(sgdUsuario);
-//					result.put(MESSAGE, "Usuario Eliminado");
-//				}
-//				else result.put(MESSAGE, "Usuario Posee Usuarios Hijos No Puede ser Eliminado");
-//				putUsuariosComboToMap(result);
-//				result.put(SUCCESS, true);
-//			}
-//			catch (AsiWebException e) {
-//				result.put(FAILURE, true);
-//				result.put(MESSAGE, GenericoUtil.getExceptionMessage(e));
-//				logger.error(e, e);
-//			}catch (Exception e) {
-//				result.put(FAILURE, true);
-//				result.put(MESSAGE, GenericoUtil.ERROR_MESSAGE);
-//				logger.error(e, e);
-//			}
-//			serializeObject(result, response);
-//		}
-//
+
+		@RequestMapping(value = "/save")
+		public void create(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+				@ModelAttribute("user") User usuario){
+			Map<String, Object> result = new HashMap<String, Object>();
+			String mensaje="";
+			try {
+			    if(usuario.getId() != null && usuario.getId() > 0){//update
+					if(!usuario.getPassword().isEmpty()){
+						usuario.setUsuarioCambiarClave("1");
+						usuario.setPassword(usuario.getPassword());
+					}else{
+						if(!"1".equals(usuario.getUsuarioCambiarClave())) usuario.setUsuarioCambiarClave("0");
+						if(request.getParameter("claveActual").toString()!=null)
+							usuario.setPassword(request.getParameter("claveActual").toString());
+					}
+						userRepository.updateUsuario(usuario);
+						mensaje="Usuario Actualizado";
+				}
+				else if(userRepository.findUserByUsuario(usuario.getLogin().toUpperCase()) == 0){//verificando si ya existe
+						usuario.setUsuarioCambiarClave("1");
+						usuario.setPassword(usuario.getPassword());
+						userRepository.saveUsuario(usuario);
+						UserRoles rolUsuario = new UserRoles();
+						rolUsuario.setUsers(usuario);
+						rolUsuario.setRoles(roleDAO.findByCodigo(GenericoUtil.ROL_EMPLEADO));
+						userRepository.saveUsuario(rolUsuario);
+
+						mensaje="Usuario Ingresado";
+				}
+				else mensaje="El Usuario Ingresado Ya existe.";
+
+				result.put(MESSAGE, mensaje);
+				result.put(SUCCESS, true);
+			}
+			catch (AsiWebException e) {
+				result.put(FAILURE, true);
+				result.put(MESSAGE, GenericoUtil.getExceptionMessage(e));
+				logger.error(e, e);
+			}catch (Exception e) {
+				result.put(FAILURE, true);
+				result.put(MESSAGE, GenericoUtil.ERROR_MESSAGE);
+				logger.error(e, e);
+				e.printStackTrace();
+			}
+			serializeObject(result, response);
+		}
+
+		@RequestMapping(value = "/delete")
+		public void update(HttpServletRequest request, HttpServletResponse response,ModelMap model,
+				@ModelAttribute("user") User usuario){
+			Map<String, Object> result = new HashMap<String, Object>();
+			try {
+					userRepository.deleteUsuario(usuario);
+					result.put(MESSAGE, "Usuario Eliminado");
+				result.put(SUCCESS, true);
+			}
+			catch (AsiWebException e) {
+				result.put(FAILURE, true);
+				result.put(MESSAGE, GenericoUtil.getExceptionMessage(e));
+				logger.error(e, e);
+			}catch (Exception e) {
+				result.put(FAILURE, true);
+				result.put(MESSAGE, GenericoUtil.ERROR_MESSAGE);
+				logger.error(e, e);
+			}
+			serializeObject(result, response);
+		}
+
 //		public void buscarRecursivaId(Long id,List<Long> listaUserId2) throws AsiWebException{
 //			List<SgdUsuario> usersChildren = DBContext.getSgdUsuarioDao().getChildrenUsers(id);
 //			for( SgdUsuario u : usersChildren ) {

@@ -22,9 +22,11 @@ public class Role {
 	@Id
 	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IdGenerator")
-	@SequenceGenerator(allocationSize = 1, name = "IdGenerator", sequenceName = "kyc_adic_id")
-	private int id;
+	@SequenceGenerator(allocationSize = 1, name = "IdGenerator", sequenceName = "roles_id_seq")
+	private int roleId;
 	private String role;
+	@Column(name = "role_activo", nullable = true, length = 2)
+	private String roleActivo;
 	@OneToMany(cascade=CascadeType.ALL)
     @JoinTable(name="user_roles",
         joinColumns = {@JoinColumn(name="role_id", referencedColumnName="id")},
@@ -32,15 +34,24 @@ public class Role {
     )
     private Set<User> userRoles;
  
-    public Integer getId() {
-        return id;
-    }
  
-    public void setId(Integer id) {
-        this.id = id;
-    }
- 
-    public String getRole() {
+    public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+
+	public String getRoleActivo() {
+		return roleActivo;
+	}
+
+	public void setRoleActivo(String roleActivo) {
+		this.roleActivo = roleActivo;
+	}
+
+	public String getRole() {
         return role;
     }
  

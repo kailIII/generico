@@ -84,6 +84,59 @@ public class GenericoUtil extends GenericoUtilConstant {
 	@Autowired
 	private static UserDAO userRepository;
 	
+	@SuppressWarnings("deprecation")
+	public static void preProcessBeforeSaveOrUpdate(Object object, SessionFactory session) {
+		try {
+			if(object instanceof HibernateProxy)
+				object = ((HibernateProxy)object).getHibernateLazyInitializer().getImplementation();
+			Field[] fields = object.getClass().getDeclaredFields();
+			Class<?> clazz = null;
+			Object value = null;
+			Serializable id = null;
+			ClassMetadata classMetadata = null;
+			GenericoProperty equifaxProperty = null;
+			ManyToOne manyToOne = null;
+			Column column = null;
+			Id idColumn = null;
+			for (Field field : fields) {
+				equifaxProperty = field.getAnnotation(GenericoProperty.class);
+				manyToOne = field.getAnnotation(ManyToOne.class);
+				column = field.getAnnotation(Column.class);
+				idColumn = field.getAnnotation(Id.class);
+				field.setAccessible(true);
+				value = field.get(object);
+				if (value == null) continue;
+				if (manyToOne != null) {
+					classMetadata = session.getClassMetadata(value.getClass());
+					if (classMetadata != null) {
+						id = classMetadata.getIdentifier(value);//getIdentifier(value, EntityMode.POJO);
+						if (id == null) field.set(object, null);
+					}
+				}
+				if(idColumn != null) {
+					if(value != null && value.equals(0L)){
+						field.set(object, null);
+					}
+				}
+				if (equifaxProperty != null && equifaxProperty.skipUpperCase()) continue;
+				clazz = field.getType();
+				if (String.class.equals(clazz)) {
+					field.set(object, StringUtils.upperCase((String) value));
+				}
+				if (column != null) {
+					int length = column.length();
+					if (length == 1) {
+						if ("true".equals(value)) field.set(object, "1");
+						else if ("false".equals(value)) field.set(object, "0");
+					}
+				}
+			}
+		}
+		catch (Exception e) {
+			logger.error("Error ejecutando pre-procesos antes de guardar objeto: " + e, e);
+		}
+	}
+	
 	public static List<XmlMarshalledObjectQuery> genQueries = null;
 	public static List<XmlMarshalledObjectQuery> genDocumentos = null;
 	private static Properties properties = null;
