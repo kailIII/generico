@@ -38,6 +38,16 @@ public class LinkNavigation {
 	public ModelAndView secondAdminPage() {
 		return new ModelAndView("admin/admin-second");
 	}
+	
+	@RequestMapping(value="/productosHome", method=RequestMethod.GET)
+	public ModelAndView productosHomePage() {
+		return new ModelAndView("productosHome");
+	}
+
+	@RequestMapping(value="/registroHome", method=RequestMethod.GET)
+	public ModelAndView registroHomePage() {
+		return new ModelAndView("registroHome");
+	}
 
 
 }
