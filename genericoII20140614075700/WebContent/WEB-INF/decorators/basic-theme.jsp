@@ -11,40 +11,43 @@
 <head>
 	<%pageContext.setAttribute("currentYear", new java.text.SimpleDateFormat("yyyy").format(new java.util.Date())); %>
     <title>GENERICO &trade; - ASI2 &copy; <c:out value="${currentYear}" /> </title>
-    <script type="text/javascript" src='<spring:url value="/resources/js/extjs-4.0.1/bootstrap.js" />'></script>
-    <script type="text/javascript" src='<spring:url value="/resources/js/locale/ext-lang-es.js" />'></script>
-<link type="text/css" href='<spring:url value="/resources/js/extjs-4.0.1/resources/css/my-ext-theme.css" />' rel="stylesheet" />
+<%--     <script type="text/javascript" src='<spring:url value="/resources/js/extjs-4.0.1/bootstrap.js" />'></script> --%>
+<%--     <script type="text/javascript" src='<spring:url value="/resources/js/locale/ext-lang-es.js" />'></script> --%>
+	<link type="text/css" href='<spring:url value="/resources/js/extjs-4.0.1/resources/css/my-ext-theme.css" />' rel="stylesheet" />
+	<link type="text/css" href='<spring:url value="/resources/css/style.css" />' rel="stylesheet" />
 
-	<script type="text/javascript" src='<spring:url value="/resources/js/generico.js" />'></script>
-    <script type="text/javascript" src='<spring:url value="/resources/js/generico/Menu.js" />'></script>
-    <script type="text/javascript" src='<spring:url value="/resources/js/generico/gen/EfxKYC.js" />'></script>
-    <script type="text/javascript" src='<spring:url value="/resources/js/ux/CheckColumn.js" />'></script>
-    <script type="text/javascript" src='<spring:url value="/resources/js/ux/NumericField.js" />'></script>
-    <decorator:head />
+<%-- 	<script type="text/javascript" src='<spring:url value="/resources/js/generico.js" />'></script> --%>
+<%--     <script type="text/javascript" src='<spring:url value="/resources/js/generico/Menu.js" />'></script> --%>
+<%--     <script type="text/javascript" src='<spring:url value="/resources/js/generico/gen/EfxKYC.js" />'></script> --%>
+<%--     <script type="text/javascript" src='<spring:url value="/resources/js/ux/CheckColumn.js" />'></script> --%>
+<%--     <script type="text/javascript" src='<spring:url value="/resources/js/ux/NumericField.js" />'></script> --%>
+<%--     <decorator:head /> --%>
 </head>
 <body>
-    <h1>Header</h1>
-    <h4 align="right"><a href="<c:url value="/j_spring_security_logout" />" >Cerrar Sesion</a></h4>
-    <p><b>Navigation -> 
-    
-    <a href="${pageContext.request.contextPath}/index.html">HOME</a> /
-    <a href="${pageContext.request.contextPath}/sobreNosotros.html">ACERCA DE NOSOTROS</a> /
-    <a href="${pageContext.request.contextPath}/empPro.html">ACERCA DE NOSOTROS</a> /
-    <a href="${pageContext.request.contextPath}/user-login.html">Inicar Sesion</a>
-<%--     <a href="${pageContext.request.contextPath}/sec/moderation.html">Moderation page</a> /  --%>
-<%--     <acegi:authorize ifAnyGranted="ROLE_ADMIN"> --%>
-<%-- 	<a href="${pageContext.request.contextPath}/admin/first.html">First Admin page</a> /  --%>
-<%-- 	<a href="${pageContext.request.contextPath}/admin/second.html">Second Admin page</a> / --%>
-<%-- 	</acegi:authorize>  --%>
-<%-- 	<acegi:authorize ifAnyGranted="ROLE_EMPLEADO"> --%>
-<%-- 	<a href="${pageContext.request.contextPath}/productoMain.html">Pantalla de Empleado</a> --%>
-<%-- 	</acegi:authorize> --%>
-    
-    </b></p>
-<%--     <page:applyDecorator name="header"/> --%>
-    <hr />
-    <decorator:body />
-    <hr />
-    <h1><b>Footer</b></h1>
+	<div id="main">
+    <div id="links"></div>
+	<div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <h1>Alfinte<span class="alternate_colour">S.A de C.V</span></h1>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="tab_selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li href="tab_selected"><a href="${pageContext.request.contextPath}/index"> INICIO</a></li>
+          <li href="tab_selected"> <a href="${pageContext.request.contextPath}/sobreNosotros">Acerca de</a></li>
+          <li href="tab_selected"> <a href="${pageContext.request.contextPath}/productosHome">Productos</a></li>
+          <li><a href="${pageContext.request.contextPath}/registroHome">Registro</a></li>
+		  <li><a href="${pageContext.request.contextPath}/user-login">Iniciar Sesion</a></li>
+        </ul>
+      </div>
+    </div>
+    </div>
+	<decorator:body />
+	
+<div id="footer" style="color:#FFFFFF">Copyright &copy; Alfinte S.A de C.V Todos los Derechos Reservados.</div>
+
+
 </body>
 </html>

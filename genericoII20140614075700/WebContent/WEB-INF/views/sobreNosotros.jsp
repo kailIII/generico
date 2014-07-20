@@ -4,13 +4,34 @@
     <html xmlns="http://www.w3.org/1999/xhtml">
         <head></head>
         <body>
-            <div id="main">
-            	
+            <div id="site_content">
+      <div id="panel"><img src="${pageContext.request.contextPath}/resources/images/panel.jpg" alt="tree tops" /></div>
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h1>Alfinte S.A de C.V</h1>
+        <h2>Hector Nahun</h2>
+        <h3>2014</h3>
+        <p>Este año los productos estan de mejor calidad y con un precio exelente.</a></p>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1>Encuentrenos :</h1>
+        <p>DIRECCION: 
+		Urb. Buenos Aires III , Calle Gabriela Mistral #560,
+		San Salvador, El Salvador , C.A.</p>
 
-En Citrix, medimos el valor de la tecnología por la forma en que beneficia a las personas. Trata sobre lo que tienen que hacer y lo que necesitan obtener. Esta visión nos inspira para crear soluciones de espacios de trabajo móviles que proporcionan a las personas nuevas formas de trabajar mejor con un acceso seguro y coherente a las aplicaciones, archivos y servicios que necesitan en cualquier dispositivo, independientemente de donde se encuentren.
+		<p>TELEFONOS:</p>
+		<ul>
+          <li> (503) 2235-0138</li>
+          <li>(503) 2235-0140</li>
+          <li>(503) 2235-0146</li>
+          <li>(503) 2235-0148</li>
+		  <li>FAX:  (503) 2225-1519</li>
+        </ul>
 
-Debido a esta nueva era, el trabajo ya no es un lugar, es algo que puede hacer cuando llegue la inspiración.  Esto es mejor para la gente, para las TI y para las empresas.  Mediante nuestra innovación, compromiso y visión de futuro del trabajo, estamos marcando la diferencia en el día a día de miles de organizaciones de todo el mundo.  Lo que hacemos en Citrix es más que un cambio de las reglas de juego, es un cambio en el modo de vida.
-            	
-            </div>
+
+      </div>
+    <div id="site_content_bottom"></div>
+    </div>
         </body>
     </html>
