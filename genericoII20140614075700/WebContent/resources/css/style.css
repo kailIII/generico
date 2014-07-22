@@ -217,6 +217,12 @@ ul#menu li.tab_selected a:hover, ul#menu li a:hover
   width: 597px;
   padding: 20px 10px 15px 26px;}
 
+
+#contentCenter
+{ text-align: center;
+  width: 597px;
+  padding: 20px 10px 15px 26px;}
+  
 #footer
 { width: 730px;
   height: 40px;

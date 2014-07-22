@@ -15,33 +15,37 @@
 </style>
 </head>
 <body>
+<div id="contentCenter">
 	<h1>Login page</h1>
 
 	<p>
 		<c:if test="${error == true}">
-			<b class="error">Invalid login or password.</b>
+			<b class="error">Usuario o Contraseña Invalidos.</b>
 		</c:if>
 	</p>
 
-	<form method="post" action="<c:url value='j_spring_security_check'/>">
 	<div class="form_settings">
-		<table>
+	<form method="post" action="<c:url value='j_spring_security_check'/>">
+		<table align="center">
 			<tbody>
 				<tr>
 					<td>Login:</td>
 				<td>
-					<div class="bg">
+<!-- 					<div class="bg"> -->
 					<input type="text" 
 					title="El nombre debe estar formado unicamente por letras" name="j_username" 
 					id="j_username" required placeholder="usuario" pattern="|^[a-zA-Z ñÑáéíóúüç]*$|"
-					size="30" maxlength="40"/></div>
+					size="30" maxlength="40"/>
+<!-- 					</div> -->
 						
 				</td>
 				</tr>
 				<tr>
 					<td>Password:</td>
 					<td>
-					<div class="bg"><input type="password" title="password" name="j_password" maxlength="25" required placeholder="password" id="j_password" size="30" maxlength="32"/></div>
+<!-- 					<div class="bg"> -->
+					<input type="password" title="password" name="j_password" maxlength="25" required placeholder="password" id="j_password" size="30" maxlength="32"/>
+<!-- 					</div> -->
 					
 						
 					</td>
@@ -52,11 +56,8 @@
 				</tr>
 			</tbody>
 		</table>
-	</div>
 	</form>
-
-	<p>
-		<a href="${pageContext.request.contextPath}/index.html">Home page</a><br />
-	</p>
+	</div>
+</div>
 </body>
 </html>
