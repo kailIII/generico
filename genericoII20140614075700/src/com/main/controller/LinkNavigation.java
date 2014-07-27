@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.web.util.GenericoUtil;
+
 @Controller
-public class LinkNavigation {
+public class LinkNavigation extends GenericoUtil{
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ModelAndView homePage() {
@@ -16,6 +18,7 @@ public class LinkNavigation {
 	
 	@RequestMapping(value="/sobreNosotros", method=RequestMethod.GET)
 	public ModelAndView aboutUs() {
+		boolean algo = hasRole("ROLE_ADMIN");
 		return new ModelAndView("sobreNosotros");
 	}
 

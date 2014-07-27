@@ -88,6 +88,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.main.dao.UserDAO;
+import com.web.security.CustomUser;
 
 @Service
 @Transactional(readOnly = true)
@@ -110,6 +111,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 			boolean accountNonExpired = true;
 			boolean credentialsNonExpired = true;
 			boolean accountNonLocked = true;
+			
+			CustomUser customUser = new CustomUser(
+					domainUser.getLogin(),
+					domainUser.getPassword(),
+					(domainUser.getUsuarioActivo() == "1" ? true:false),
+					(domainUser.getUsuarioCambiarClave() == "1"  ? true:false),
+					true,
+					true,
+					getAuthorities(domainUser.getRole().getRoleId()));
+			
+			userRepository.getCustomUser(customUser, username);
 			
 			return new User(
 					domainUser.getLogin(), 

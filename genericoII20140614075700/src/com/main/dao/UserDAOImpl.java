@@ -17,6 +17,7 @@ import com.generico.base.BaseDaoImpl;
 import com.generico.exception.AsiWebException;
 import com.main.java.User;
 import com.main.java.UserRoles;
+import com.web.security.CustomUser;
 
 
 	@Repository
@@ -162,5 +163,30 @@ import com.main.java.UserRoles;
 		
 		public void deleteAl(List<?> objectList) throws AsiWebException {
 			deleteAll(objectList);
+		}
+		
+		@SuppressWarnings({ "unchecked", "deprecation" })
+		public CustomUser getCustomUser(CustomUser customUser, String username) throws AsiWebException{
+			Criteria criteria = openSession().getSessionFactory().getCurrentSession().createCriteria(User.class);
+			criteria.createAlias("ctgSucursales", "sgdSucursal", Criteria.INNER_JOIN);
+			criteria.createAlias("ctgSucursales.ctgSubTipoSucursal", "ctgSubTipoSucursal", Criteria.INNER_JOIN);
+			criteria.createAlias("ctgSubTipoSucursal.ctgTipoSucursal", "ctgTipoSucursal", Criteria.INNER_JOIN);
+			criteria.add(Restrictions.eq("login", username));
+			List<User> items = (List<User>) findByCriteria(criteria);
+			if(!items.isEmpty()){
+				User user = items.get(0);
+				customUser.setUserId(Long.parseLong(user.getId().toString()));
+//				customUser.setFullName(sgdUsuario.getSgdUsuarioNombreCompleto());
+				customUser.setSucursalId(user.getCtgSucursales().getCtgSucursalId());
+				customUser.setSucursal(user.getCtgSucursales().getCtgSucursalNombre());
+				customUser.setSubTipoSucursalId(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgSubTipoSucursalId());
+				customUser.setSubTipoSucursal(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgSubTipoSucursalNombre());
+				customUser.setTipoSucursalId(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgTipoSucursal().getCtgTipoSucursalId());
+				customUser.setTipoSucursal(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgTipoSucursal().getCtgTipoSucursalNombre());
+				customUser.setUser(user.getLogin());
+				customUser.setRequiredChangePassword(user.getUsuarioCambiarClave());
+				return customUser;
+			}
+			return null;
 		}
 }
