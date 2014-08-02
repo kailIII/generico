@@ -17,7 +17,7 @@
 	
 	<decorator name="cliente" page="clienteDecorator.jsp">
     	<pattern>/clienteHome</pattern>
-<!-- 		<pattern>/pedidos/*</pattern> -->
+		<pattern>/persona/crearCliente</pattern>
 <!-- 		<pattern>/perfil/*</pattern> -->
 		
 	</decorator>
