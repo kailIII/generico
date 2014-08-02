@@ -9,5 +9,17 @@
 		<pattern>/seguridad/*</pattern>
 		<pattern>/sucursal/*</pattern>
 		<pattern>/catalogo/*</pattern>
+		<pattern>/administradorHome</pattern>
 	</decorator>
+	
+<!-- 	Esto es para el cliente inicio=productos, pedidos= pedidos,= perfil=pefil -->
+	
+	
+	<decorator name="cliente" page="clienteDecorator.jsp">
+    	<pattern>/clienteHome</pattern>
+<!-- 		<pattern>/pedidos/*</pattern> -->
+<!-- 		<pattern>/perfil/*</pattern> -->
+		
+	</decorator>
+	
 </decorators>

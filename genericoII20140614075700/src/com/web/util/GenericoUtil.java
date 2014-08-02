@@ -694,7 +694,7 @@ public class GenericoUtil extends GenericoUtilConstant {
 
 	public static String getSgdUsuarioNivelAccesoFromAcegi() {
 		Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if (obj instanceof CustomUser) return ((CustomUser) obj).getNivelAcceso();
+		if (obj instanceof CustomUser) return ((CustomUser) obj).getFullName();
 		else return "";
 	}
 
