@@ -1,9 +1,13 @@
 package com.main.controller;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.web.util.GenericoUtil;
 
 @Controller
 public class SecurityNavigation {
@@ -20,8 +24,24 @@ public class SecurityNavigation {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/success-login", method=RequestMethod.GET)
-	public ModelAndView successLogin() {
+	@RequestMapping(value="/success-login", method={RequestMethod.GET, RequestMethod.POST})
+	public String successLogin(HttpServletResponse response) {
+
+		GenericoUtil genericoUtil = new GenericoUtil();
+		if (genericoUtil.hasRole("ROLE_CLIENTE")) {
+		return "redirect:/clienteHome";
+		} else {
+		return "redirect:/administradorHome";
+		}
+	}
+	
+	@RequestMapping(value="/clienteHome", method={RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView clienteHome() {
+		return new ModelAndView("cliente/clienteInicio");
+	}
+	
+	@RequestMapping(value="/administradorHome", method={RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView administradorHome() {
 		return new ModelAndView("secureLoggin/success-login");
 	}
 
