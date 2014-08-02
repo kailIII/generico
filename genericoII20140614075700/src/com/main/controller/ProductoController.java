@@ -23,10 +23,6 @@ public class ProductoController
 	@Autowired
 	private ProductoService productoService;
 
-	@Autowired
-	private ContactValidator contactValidator;
-
-
 	@RequestMapping("/productoMain")
 	public String listProductos(Map<String, Object> map) {
 

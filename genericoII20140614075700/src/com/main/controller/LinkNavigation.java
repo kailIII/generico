@@ -1,10 +1,13 @@
 package com.main.controller;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.main.cliente.dto.SgiPersona;
 import com.web.util.GenericoUtil;
 
 @Controller
@@ -47,9 +50,15 @@ public class LinkNavigation extends GenericoUtil{
 		return new ModelAndView("productosHome");
 	}
 
-	@RequestMapping(value="/registroHome", method=RequestMethod.GET)
-	public ModelAndView registroHomePage() {
-		return new ModelAndView("registroHome");
+//	@RequestMapping(value="/registroHome", method=RequestMethod.GET)
+//	public ModelAndView registroHomePage() {
+//		return new ModelAndView("registroHome");
+//	}
+	
+	@RequestMapping("/registroHome")
+	public String registroHomePage(Map<String, Object> map) {
+		map.put("sgiPersona", new SgiPersona());
+		return "registroHome";
 	}
 
 
