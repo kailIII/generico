@@ -62,10 +62,10 @@ import com.web.security.CustomUser;
 		@SuppressWarnings("unchecked")
 		public List<Object[]> getAllUsuarios() throws AsiWebException {
 			Criteria criterias = openSession().getSessionFactory().getCurrentSession().createCriteria(User.class);
-			criterias.createAlias("ctgSucursales", "ctgSucursales");
-			criterias.createAlias("ctgSucursales.ctgSubTipoSucursal", "ctgSubTipoSucursal");
-			criterias.createAlias("ctgSubTipoSucursal.ctgTipoSucursal", "ctgTipoSucursal");
-			criterias.createAlias("ctgTipoDocumento", "ctgTipoDocumento");
+//			criterias.createAlias("ctgSucursales", "ctgSucursales");
+//			criterias.createAlias("ctgSucursales.ctgSubTipoSucursal", "ctgSubTipoSucursal");
+//			criterias.createAlias("ctgSubTipoSucursal.ctgTipoSucursal", "ctgTipoSucursal");
+//			criterias.createAlias("ctgTipoDocumento", "ctgTipoDocumento");
 			
 			criterias.setProjection(Projections.distinct(
 					Projections.projectionList().
@@ -73,18 +73,18 @@ import com.web.security.CustomUser;
 						add(Projections.property("login")).
 						add(Projections.property("password")).
 						add(Projections.property("usuarioCambiarClave")).
-						add(Projections.property("usuarioActivo")).
-						add(Projections.property("usuarioPrimerNombre")).
-						add(Projections.property("usuarioSegundoNombre")).
-						add(Projections.property("usuarioprimerApellido")).
-						add(Projections.property("usuarioSegundoApellido")).
-						add(Projections.property("usuarioCorreoElectronico")).
-						add(Projections.property("usuarioDocumento")).
-						add(Projections.property("ctgSucursales.ctgSucursalId")).
-						add(Projections.property("ctgSucursales.ctgSucursalNombre")).
-						add(Projections.property("ctgSubTipoSucursal.ctgSubTipoSucursalId")).
-						add(Projections.property("ctgTipoSucursal.ctgTipoSucursalId")).
-						add(Projections.property("ctgTipoDocumento.ctgCatalogoId"))
+						add(Projections.property("usuarioActivo"))
+//						add(Projections.property("usuarioPrimerNombre")).
+//						add(Projections.property("usuarioSegundoNombre")).
+//						add(Projections.property("usuarioprimerApellido")).
+//						add(Projections.property("usuarioSegundoApellido")).
+//						add(Projections.property("usuarioCorreoElectronico")).
+//						add(Projections.property("usuarioDocumento")).
+//						add(Projections.property("ctgSucursales.ctgSucursalId")).
+//						add(Projections.property("ctgSucursales.ctgSucursalNombre")).
+//						add(Projections.property("ctgSubTipoSucursal.ctgSubTipoSucursalId")).
+//						add(Projections.property("ctgTipoSucursal.ctgTipoSucursalId")).
+//						add(Projections.property("ctgTipoDocumento.ctgCatalogoId"))
 					));
 			criterias.add(Restrictions.ne("id", 0));
 			criterias.addOrder(Order.asc("login"));
@@ -131,24 +131,24 @@ import com.web.security.CustomUser;
 		@SuppressWarnings("unchecked")
 		public List<Object[]> getAllActivesUsuarios() throws AsiWebException {
 			Criteria criteria = openSession().getSessionFactory().getCurrentSession().createCriteria(User.class);
-			criteria.createAlias("ctgSucursales", "ctgSucursal");
+//			criteria.createAlias("ctgSucursales", "ctgSucursal");
 			criteria.setProjection(Projections.distinct(
 					Projections.projectionList().
 					add(Projections.property("id")).
 					add(Projections.property("usuarioActivo")).
 					add(Projections.property("login")).
 					add(Projections.property("password")).
-					add(Projections.property("usuarioPrimerNombre")).
-					add(Projections.property("usuarioSegundoNombre")).
-					add(Projections.property("usuarioprimerApellido")).
-					add(Projections.property("usuarioSegundoApellido")).
-					add(Projections.property("usuarioCorreoElectronico")).
-//					add(Projections.property("sgdUsuarioPadre.sgdUsuarioId")).
-					add(Projections.property("ctgSucursal.ctgSucursalId")).
-					add(Projections.property("ctgSucursal.ctgSucursalNombre")).
-					add(Projections.property("usuarioCambiarClave")).
-					add(Projections.property("usuarioDocumento")).
-					add(Projections.property("ctgTipoDocumento.ctgCatalogoId"))
+//					add(Projections.property("usuarioPrimerNombre")).
+//					add(Projections.property("usuarioSegundoNombre")).
+//					add(Projections.property("usuarioprimerApellido")).
+//					add(Projections.property("usuarioSegundoApellido")).
+//					add(Projections.property("usuarioCorreoElectronico")).
+////					add(Projections.property("sgdUsuarioPadre.sgdUsuarioId")).
+//					add(Projections.property("ctgSucursal.ctgSucursalId")).
+//					add(Projections.property("ctgSucursal.ctgSucursalNombre")).
+					add(Projections.property("usuarioCambiarClave"))
+//					add(Projections.property("usuarioDocumento")).
+//					add(Projections.property("ctgTipoDocumento.ctgCatalogoId"))
 			));
 			criteria.add(Restrictions.eq("usuarioActivo", "1"));
 			criteria.addOrder(Order.asc("login"));
@@ -168,21 +168,21 @@ import com.web.security.CustomUser;
 		@SuppressWarnings({ "unchecked", "deprecation" })
 		public CustomUser getCustomUser(CustomUser customUser, String username) throws AsiWebException{
 			Criteria criteria = openSession().getSessionFactory().getCurrentSession().createCriteria(User.class);
-			criteria.createAlias("ctgSucursales", "sgdSucursal", Criteria.INNER_JOIN);
-			criteria.createAlias("ctgSucursales.ctgSubTipoSucursal", "ctgSubTipoSucursal", Criteria.INNER_JOIN);
-			criteria.createAlias("ctgSubTipoSucursal.ctgTipoSucursal", "ctgTipoSucursal", Criteria.INNER_JOIN);
+//			criteria.createAlias("ctgSucursales", "sgdSucursal", Criteria.INNER_JOIN);
+//			criteria.createAlias("ctgSucursales.ctgSubTipoSucursal", "ctgSubTipoSucursal", Criteria.INNER_JOIN);
+//			criteria.createAlias("ctgSubTipoSucursal.ctgTipoSucursal", "ctgTipoSucursal", Criteria.INNER_JOIN);
 			criteria.add(Restrictions.eq("login", username));
 			List<User> items = (List<User>) findByCriteria(criteria);
 			if(!items.isEmpty()){
 				User user = items.get(0);
 				customUser.setUserId(Long.parseLong(user.getId().toString()));
 //				customUser.setFullName(sgdUsuario.getSgdUsuarioNombreCompleto());
-				customUser.setSucursalId(user.getCtgSucursales().getCtgSucursalId());
-				customUser.setSucursal(user.getCtgSucursales().getCtgSucursalNombre());
-				customUser.setSubTipoSucursalId(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgSubTipoSucursalId());
-				customUser.setSubTipoSucursal(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgSubTipoSucursalNombre());
-				customUser.setTipoSucursalId(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgTipoSucursal().getCtgTipoSucursalId());
-				customUser.setTipoSucursal(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgTipoSucursal().getCtgTipoSucursalNombre());
+//				customUser.setSucursalId(user.getCtgSucursales().getCtgSucursalId());
+//				customUser.setSucursal(user.getCtgSucursales().getCtgSucursalNombre());
+//				customUser.setSubTipoSucursalId(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgSubTipoSucursalId());
+//				customUser.setSubTipoSucursal(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgSubTipoSucursalNombre());
+//				customUser.setTipoSucursalId(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgTipoSucursal().getCtgTipoSucursalId());
+//				customUser.setTipoSucursal(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgTipoSucursal().getCtgTipoSucursalNombre());
 				customUser.setUser(user.getLogin());
 				customUser.setRequiredChangePassword(user.getUsuarioCambiarClave());
 				return customUser;

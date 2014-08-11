@@ -16,13 +16,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "ctg_rol")
 public class Role {
 
 	@Id
 	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IdGenerator")
-	@SequenceGenerator(allocationSize = 1, name = "IdGenerator", sequenceName = "roles_id_seq")
+	@SequenceGenerator(allocationSize = 1, name = "IdGenerator", sequenceName = "ctg_rol_id_seq")
 	private int roleId;
 	private String role;
 	@Column(name = "role_activo", nullable = true, length = 2)

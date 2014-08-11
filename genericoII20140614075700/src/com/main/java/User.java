@@ -6,22 +6,18 @@ package com.main.java;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.generico.dto.ctg.CtgCatalogo;
-import com.generico.dto.ctg.CtgSucursal;
 
 @Entity
-@Table(name = "users")
+@Table(name = "usuario")
 public class User {
 
 @Id
@@ -36,24 +32,6 @@ public class User {
 	@Column(name = "usu_activo", nullable = false, length = 1)
 	private String usuarioActivo = "1";
 	
-	@Column(name = "usu_primer_nombre", nullable = false, length = 20)
-	private String usuarioPrimerNombre;
-	@Column(name = "usu_segundo_nombre", nullable = true, length = 20)
-	private String usuarioSegundoNombre;
-	@Column(name = "usu_primer_apellido", nullable = true, length = 20)
-	private String usuarioprimerApellido;
-	@Column(name = "usu_segundo_apellido", nullable = false, length = 20)
-	private String usuarioSegundoApellido;
-	@Column(name = "usu_correo_electronico", nullable = true, length = 80)
-	private String usuarioCorreoElectronico;
-	@Column(name = "usu_documento", nullable = true, length = 20)
-	private String usuarioDocumento;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ctg_suc_id", nullable = false)
-	private CtgSucursal ctgSucursales;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ctg_tdoc_id", nullable = false)
-	private CtgCatalogo ctgTipoDocumento;
 	
 	@OneToOne(cascade=CascadeType.ALL)
     @JoinTable(name="user_roles",
@@ -108,70 +86,6 @@ public class User {
 
 	public void setUsuarioActivo(String usuarioActivo) {
 		this.usuarioActivo = usuarioActivo;
-	}
-
-	public String getUsuarioPrimerNombre() {
-		return usuarioPrimerNombre;
-	}
-
-	public void setUsuarioPrimerNombre(String usuarioPrimerNombre) {
-		this.usuarioPrimerNombre = usuarioPrimerNombre;
-	}
-
-	public String getUsuarioSegundoNombre() {
-		return usuarioSegundoNombre;
-	}
-
-	public void setUsuarioSegundoNombre(String usuarioSegundoNombre) {
-		this.usuarioSegundoNombre = usuarioSegundoNombre;
-	}
-
-	public String getUsuarioprimerApellido() {
-		return usuarioprimerApellido;
-	}
-
-	public void setUsuarioprimerApellido(String usuarioprimerApellido) {
-		this.usuarioprimerApellido = usuarioprimerApellido;
-	}
-
-	public String getUsuarioSegundoApellido() {
-		return usuarioSegundoApellido;
-	}
-
-	public void setUsuarioSegundoApellido(String usuarioSegundoApellido) {
-		this.usuarioSegundoApellido = usuarioSegundoApellido;
-	}
-
-	public String getUsuarioCorreoElectronico() {
-		return usuarioCorreoElectronico;
-	}
-
-	public void setUsuarioCorreoElectronico(String usuarioCorreoElectronico) {
-		this.usuarioCorreoElectronico = usuarioCorreoElectronico;
-	}
-
-	public String getUsuarioDocumento() {
-		return usuarioDocumento;
-	}
-
-	public void setUsuarioDocumento(String usuarioDocumento) {
-		this.usuarioDocumento = usuarioDocumento;
-	}
-
-	public CtgSucursal getCtgSucursales() {
-		return ctgSucursales;
-	}
-
-	public void setCtgSucursales(CtgSucursal ctgSucursales) {
-		this.ctgSucursales = ctgSucursales;
-	}
-
-	public CtgCatalogo getCtgTipoDocumento() {
-		return ctgTipoDocumento;
-	}
-
-	public void setCtgTipoDocumento(CtgCatalogo ctgTipoDocumento) {
-		this.ctgTipoDocumento = ctgTipoDocumento;
 	}
 
 }

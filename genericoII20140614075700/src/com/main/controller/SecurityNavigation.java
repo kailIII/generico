@@ -24,14 +24,17 @@ public class SecurityNavigation {
 		return modelAndView;
 	}
 
+	@SuppressWarnings("static-access")
 	@RequestMapping(value="/success-login", method={RequestMethod.GET, RequestMethod.POST})
 	public String successLogin(HttpServletResponse response) {
 
 		GenericoUtil genericoUtil = new GenericoUtil();
 		if (genericoUtil.hasRole("ROLE_CLIENTE")) {
 		return "redirect:/clienteHome";
-		} else {
+		} else if (genericoUtil.hasRole("ROLE_ADMIN")){
 		return "redirect:/administradorHome";
+		} else {
+			return "redirect:/secureLoggin/success-login";
 		}
 	}
 	
