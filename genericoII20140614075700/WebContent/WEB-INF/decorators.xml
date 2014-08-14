@@ -24,4 +24,11 @@
 		
 	</decorator>
 	
+<!-- 	decorador para empleados -->
+	<decorator name="empleado" page="empleadoDecorator.jsp">
+		<pattern>/empleadoHome</pattern>
+		<pattern>/empleado/inicio</pattern>
+		<pattern>/empleado/asistenciaTecnica</pattern>
+	</decorator>
+	
 </decorators>
