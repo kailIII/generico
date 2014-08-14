@@ -170,6 +170,13 @@ public class GenericoUtil extends GenericoUtilConstant {
 		if (obj instanceof CustomUser) return ((CustomUser) obj).getUserId();
 		else return null;
 	}
+	
+	public static Integer getClienteIdFromAcegi() {
+		Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (obj instanceof CustomUser) return ((CustomUser) obj).getClienteId();
+		else return null;
+	}
+	
 	public static User getSgdUsuarioFromAcegi() {
 		Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (obj instanceof CustomUser){

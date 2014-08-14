@@ -20,6 +20,7 @@ public class CustomUser extends User implements UserDetails{
 	private Long subTipoSucursalId;
 	private Long tipoSucursalId;
 	private String nivelAcceso;
+	private Integer clienteId;
 	
 	public CustomUser(String username, String password, boolean enabled,
 			boolean accountNonExpired, boolean credentialsNonExpired,
@@ -30,6 +31,16 @@ public class CustomUser extends User implements UserDetails{
 	}
 
 	
+	public Integer getClienteId() {
+		return clienteId;
+	}
+
+
+	public void setClienteId(Integer clienteId) {
+		this.clienteId = clienteId;
+	}
+
+
 	public String getNivelAcceso() {
 		return nivelAcceso;
 	}

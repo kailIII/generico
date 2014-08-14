@@ -26,7 +26,7 @@ import com.main.cliente.dto.SgiPersona;
 public class Cliente {
 
 	@Id
-	@Column(name = "emp_asis_tec_id", unique = true, nullable = false)
+	@Column(name = "cliente_id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IdGenerator")
     @SequenceGenerator(allocationSize = 1, name = "IdGenerator", sequenceName = "cliente_id_seq")
 	private Integer clienteId;

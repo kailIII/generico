@@ -15,9 +15,11 @@ import org.springframework.stereotype.Repository;
 
 import com.generico.base.BaseDaoImpl;
 import com.generico.exception.AsiWebException;
+import com.main.java.Cliente;
 import com.main.java.User;
 import com.main.java.UserRoles;
 import com.web.security.CustomUser;
+import com.web.util.GenericoUtil;
 
 
 	@Repository
@@ -176,6 +178,7 @@ import com.web.security.CustomUser;
 			if(!items.isEmpty()){
 				User user = items.get(0);
 				customUser.setUserId(Long.parseLong(user.getId().toString()));
+				customUser.setClienteId(findClienteByUserId(user.getId()).getClienteId());
 //				customUser.setFullName(sgdUsuario.getSgdUsuarioNombreCompleto());
 //				customUser.setSucursalId(user.getCtgSucursales().getCtgSucursalId());
 //				customUser.setSucursal(user.getCtgSucursales().getCtgSucursalNombre());
@@ -189,4 +192,30 @@ import com.web.security.CustomUser;
 			}
 			return null;
 		}
+		
+		public Cliente findClienteByUserId(Integer userId) throws AsiWebException{
+			try {
+			Criteria criteria = openSession().getSessionFactory().getCurrentSession().createCriteria(Cliente.class);
+			criteria.createAlias("sgiPersona", "sgiPersona");
+			criteria.createAlias("sgiPersona.user", "user");
+			criteria.add(Restrictions.eq("user.id", userId));
+//			criteria.setProjection(
+//					Projections.projectionList().
+//					add(Projections.property("user.id"))
+//			);
+				List<Cliente> list = (List<Cliente>) findByCriteria(criteria);
+				if(!GenericoUtil.isEmptyList(list)){
+					return list.get(0);
+				}
+				return null;
+			} catch (AsiWebException e) {
+				logger.error(e, e);
+				throw e;
+			} catch (Exception e) {
+				logger.error(e, e);
+				throw new AsiWebException("Problemas al tratar de obtener la informaci\u00F3n");
+			}
+			
+		}
+
 }

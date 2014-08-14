@@ -25,7 +25,6 @@ public class AsistenciaTecnicaDAOImpl  extends BaseDaoImpl implements Asistencia
 
 	public void saveAsistenciaTecnica(AsistenciaTecnica asistenciaTecnica) throws AsiWebException{
 	save(asistenciaTecnica);
-	
 	}
 
 }
