@@ -32,7 +32,7 @@
 					<div class="wrapper">
 						Usuario
 						<div class="bg">
-						<input type="text" title="El nombre debe estar formado unicamente por letras" name="usuario" required placeholder="usuario" pattern="|^[a-zA-Z ñÑáéíóúüç]*$|"/></div>
+						<input type="text" title="El nombre debe estar formado unicamente por letras" name="usuario" required placeholder="usuario" pattern="|^[a-zA-Z ñÑáéíóúüç]*$|" /></div>
 					</div><br>
 					<div class="wrapper">
 						Password

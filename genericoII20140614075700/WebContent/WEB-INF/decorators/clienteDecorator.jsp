@@ -44,8 +44,8 @@
           <!-- put class="tab_selected" in the li tag for the selected page - to highlight which page you're on -->
           <li class="tab_selected"><a href="${pageContext.request.contextPath}/clienteInicio">Productos</a></li>
           <li><a href="${pageContext.request.contextPath}/clienteInicio">Pedidos</a></li>
-          <li><a href="${pageContext.request.contextPath}/clienteInicio">perfil</a></li>
-          
+          <li><a href="${pageContext.request.contextPath}/clienteInicio">Actualizar datos</a></li>
+          <li><a href="${pageContext.request.contextPath}/cliente/asistenciaTecnica">Asistencia tecnica</a></li>
 <!--           cerrar cecion -->
 
           <li><a href="<c:url value="/j_spring_security_logout" />" >Cerrar Sesion</a></li>

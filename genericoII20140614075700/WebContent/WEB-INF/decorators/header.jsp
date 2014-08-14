@@ -11,7 +11,7 @@
 <div id="divTitle" style="float:left;font-size: 16px;font-style: italic;font-weight:bold;clear: both;"></div>
 </div>
 <a class="ch clave" title="Cambiar Clave" href="" title="Cambio de Clave"></a>
-<a class="ch cerrar" title="Cerrar Sessi\u00F3n" href="${contextPath}/security/logout" title="Cerrar Sesi&oacute;n"></a>
+<a class="ch cerrar" title="Cerrar Sessi\u00F3n" href="<c:url value="/j_spring_security_logout" />" title="Cerrar Sesi&oacute;n"></a>
 <a class="ch inicio" title="Ir a Inicio" href="${contextPath}/home" title="Inicio"></a>
 <table cellpadding="0" cellspacing="0" style="float:right;margin-right: 20px;width: 450px;">
 <tr>
@@ -24,7 +24,7 @@ ${requestScope.headerTitle}
 </div>
 <div id="clock" style="float: right;"></div>
 <div style="float: right;">
-USUARIO: <b><acegi:authentication property="principal.fullName" /></b>
+USUARIO: <b><acegi:authentication property="principal.username" /></b>
 </div>
 </td>
 <td class='tdTitleR'></td>

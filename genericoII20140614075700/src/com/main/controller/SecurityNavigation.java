@@ -45,7 +45,7 @@ public class SecurityNavigation {
 	
 	@RequestMapping(value="/administradorHome", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView administradorHome() {
-		return new ModelAndView("secureLoggin/success-login");
+		return new ModelAndView("admin/home");
 	}
 
 }
