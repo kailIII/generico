@@ -26,5 +26,11 @@ public class AsistenciaTecnicaDAOImpl  extends BaseDaoImpl implements Asistencia
 	public void saveAsistenciaTecnica(AsistenciaTecnica asistenciaTecnica) throws AsiWebException{
 	save(asistenciaTecnica);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<AsistenciaTecnica> listAsistenciaTecnica() {
+
+		return sessionFactory.getCurrentSession().createQuery("from AsistenciaTecnica").list();
+	}
 
 }

@@ -178,7 +178,7 @@ import com.web.util.GenericoUtil;
 			if(!items.isEmpty()){
 				User user = items.get(0);
 				customUser.setUserId(Long.parseLong(user.getId().toString()));
-				customUser.setClienteId(findClienteByUserId(user.getId()).getClienteId());
+//				customUser.setClienteId(findClienteByUserId(user.getId()).getClienteId());
 //				customUser.setFullName(sgdUsuario.getSgdUsuarioNombreCompleto());
 //				customUser.setSucursalId(user.getCtgSucursales().getCtgSucursalId());
 //				customUser.setSucursal(user.getCtgSucursales().getCtgSucursalNombre());
