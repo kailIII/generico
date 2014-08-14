@@ -46,13 +46,13 @@ public class ClienteAsistenciaTecnicaController {
 	
 	
 	
-	@SuppressWarnings({ "static-access", "unused" })
 	@RequestMapping(value = "/nuevaAsistenciaTecnica", method=RequestMethod.POST)
 	public String crearAsistencia(@ModelAttribute("asistenciaTecnica") AsistenciaTecnica asistenciaTecnica, BindingResult result) {
 		try {
 			GenericoUtil genericoUtil = new GenericoUtil();
 //					genericoUtil.getCtgSucursalIdFromAcegi();
 			Cliente cliente = new Cliente();
+			Integer clienteId = genericoUtil.getClienteIdFromAcegi(); 
 			cliente.setClienteId(1);
 			cliente.setClienteNumeroDeCuenta("3244232423");
 			
