@@ -3,7 +3,6 @@ package com.main.java;
 // Generated 04-10-2014 04:49:49 PM by Hibernate Tools 3.4.0.CR1
 
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,13 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.generico.dto.ctg.CtgCatalogo;
 
 
 @Entity
@@ -31,7 +27,7 @@ public class AsistenciaTecnica {
 	private Integer empleadoAsistenciaTecnicaId;
 	@Column(name = "emp_asis_tec_titulo")
 	private String empleadoAsistenciaTecnicaTitulo;
-	@Column(name = "emp_asis_tec_descripcion")
+	@Column(name = "emp_asis_tec_descripcion")	
 	private String empleadoAsistenciaTecnicaDescripcion;
 	@Column(name = "emp_asis_tec_telefono")
 	private String empleadoAsistenciaTecnicaTelefono;
@@ -94,11 +90,12 @@ public class AsistenciaTecnica {
 			String empleadoAsistenciaTecnicaEstado) {
 		this.empleadoAsistenciaTecnicaEstado = empleadoAsistenciaTecnicaEstado;
 	}
-	public Empleado getEmpleado() {
-		return Empleado;
+	public Cliente getCliente() {
+		return cliente;
 	}
-	public void setEmpleado(Empleado empleado) {
-		Empleado = empleado;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
+	
 	
 }
