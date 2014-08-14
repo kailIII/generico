@@ -33,8 +33,10 @@ public class SecurityNavigation {
 		return "redirect:/clienteHome";
 		} else if (genericoUtil.hasRole("ROLE_ADMIN")){
 		return "redirect:/administradorHome";
+		} else if(genericoUtil.hasRole("ROLE_EMPLEADO")){
+			return "redirect:/empleadoHome";
 		} else {
-			return "redirect:/secureLoggin/success-login";
+			return "secureLoggin/success-login";
 		}
 	}
 	
@@ -48,4 +50,8 @@ public class SecurityNavigation {
 		return new ModelAndView("admin/home");
 	}
 
+	@RequestMapping(value="/empleadoHome", method={RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView empleadoHome() {
+		return new ModelAndView("empleado/empleadoInicio");
+	}
 }
