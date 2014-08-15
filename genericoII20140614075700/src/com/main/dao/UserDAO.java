@@ -22,5 +22,5 @@ public interface UserDAO {
 	public List<Object[]> findByProp(Class<?> entityClass, String entityProperty, Object entityValue) throws AsiWebException;
 	public void deleteAl(List<?> objectList) throws AsiWebException;
 	public CustomUser getCustomUser(CustomUser customUser, String username) throws AsiWebException;
-	public Cliente findClienteByUserId(Integer userId) throws AsiWebException;
+	public Cliente findClienteByUserId(Long userId) throws AsiWebException;
 }

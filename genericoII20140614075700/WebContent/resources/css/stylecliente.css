@@ -7,7 +7,7 @@ body
   padding: 0px;
   margin: 0px;
   font-size: .80em;
-  background: #E9E4C7 url(alfom.png);
+  background: #E9E4C7 url(../images/pattern2.png);
   color: #555;}
 
 p
@@ -105,7 +105,7 @@ ol li
 
 #header
 { height: 152px;
-  background: url(back.png) repeat-x;}
+  background: url(../images/back.png) repeat-x;}
 
 #logo
 { width: 870px;
@@ -159,10 +159,10 @@ ul#menu li.tab_selected a
 
 ul#menu li.tab_selected
 { margin: 10px 0 0 0;
-  background: url(tabs.png) no-repeat 0 0px;}
+  background: url(../images/tabs.png) no-repeat 0 0px;}
 
 ul#menu li.tab_selected a
-{ background: url(tabs.png) no-repeat 100% 0px;
+{ background: url(../images/tabs.png) no-repeat 100% 0px;
   color: #A2AB3B;}
 
 ul#menu li.tab_selected a:hover, ul#menu li a:hover
@@ -176,14 +176,14 @@ ul#menu li.tab_selected a:hover, ul#menu li a:hover
 #site_content
 { width: 875px;
   overflow: hidden;
-  background: #FFF url(site_content.png) repeat-y;
+  background: #FFF url(../images/site_content.png) repeat-y;
   padding-top: 20px;} 
 
 #site_content_bottom
 { width: 875px;
   height: 5px;
   clear: both;
-  background: url(site_content_bottom.png) no-repeat;}
+  background: url(../images/site_content_bottom.png) no-repeat;}
 
 .sidebar
 { float: right;
@@ -205,12 +205,12 @@ ul#menu li.tab_selected a:hover, ul#menu li a:hover
 { text-decoration: none; 
   padding: 0px 0px 0px 18px;
   display: block;
-  background: transparent url(arrow.png) no-repeat left center;
+  background: transparent url(../images/arrow.png) no-repeat left center;
   color: #555;
   border: none;} 
 
 .sidebar li a.selected, .sidebar li a:hover, .sidebar li a.selected:hover
-{ background: transparent url(arrow_select.png) no-repeat left center;} 
+{ background: transparent url(../images/arrow_select.png) no-repeat left center;} 
 
 #content
 { text-align: left;

@@ -54,10 +54,10 @@ public class UsuarioRolController extends BaseController {
 	}
 
 	@RequestMapping(value = "save", method = {RequestMethod.GET, RequestMethod.POST})
-	public void save(HttpServletResponse response, @RequestParam String usrId, @RequestParam String[] rolesCheked){
+	public void save(HttpServletResponse response, @RequestParam Long usrId, @RequestParam String[] rolesCheked){
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		try {
-			usuarioService.updateRolesByUser(Integer.parseInt(usrId), rolesCheked);
+			usuarioService.updateRolesByUser(usrId, rolesCheked);
 			map.put("jsonString", JSONArray.fromObject(getAllRolesByUser()));
 			map.put("success", true);
 			serializeObject(map, response);

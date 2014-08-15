@@ -186,14 +186,14 @@ import com.web.util.GenericoUtil;
 //				customUser.setSubTipoSucursal(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgSubTipoSucursalNombre());
 //				customUser.setTipoSucursalId(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgTipoSucursal().getCtgTipoSucursalId());
 //				customUser.setTipoSucursal(user.getCtgSucursales().getCtgSubTipoSucursal().getCtgTipoSucursal().getCtgTipoSucursalNombre());
-				customUser.setUser(user.getLogin());
+				customUser.setUsername(user.getLogin());
 				customUser.setRequiredChangePassword(user.getUsuarioCambiarClave());
 				return customUser;
 			}
 			return null;
 		}
 		
-		public Cliente findClienteByUserId(Integer userId) throws AsiWebException{
+		public Cliente findClienteByUserId(Long userId) throws AsiWebException{
 			try {
 			Criteria criteria = openSession().getSessionFactory().getCurrentSession().createCriteria(Cliente.class);
 			criteria.createAlias("sgiPersona", "sgiPersona");

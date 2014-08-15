@@ -24,7 +24,7 @@ public class User {
 	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IdGenerator")
     @SequenceGenerator(allocationSize = 1, name = "IdGenerator", sequenceName = "users_id_seq")
-	private Integer id;
+	private Long id;
 	private String login;
 	private String password;
 	@Column(name = "usu_cambiar_clave", nullable = true, length = 2)
@@ -40,11 +40,11 @@ public class User {
     )
 	private Role role;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
  
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
  

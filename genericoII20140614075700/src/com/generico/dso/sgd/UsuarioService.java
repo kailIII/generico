@@ -9,6 +9,6 @@ public interface UsuarioService {
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false, rollbackFor = {
 			Exception.class, AsiWebException.class })
-	public void updateRolesByUser(Integer usrId, String[] rolesCheked) throws AsiWebException;
+	public void updateRolesByUser(Long usrId, String[] rolesCheked) throws AsiWebException;
 
 }

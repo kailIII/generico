@@ -38,25 +38,27 @@ public class CustomUserDetailsService implements UserDetailsService {
 			boolean credentialsNonExpired = true;
 			boolean accountNonLocked = true;
 			
-			CustomUser customUser = new CustomUser(
-					domainUser.getLogin(),
-					domainUser.getPassword(),
-					(domainUser.getUsuarioActivo() == "1" ? true:false),
-					(domainUser.getUsuarioCambiarClave() == "1"  ? true:false),
-					true,
-					true,
-					getAuthorities(domainUser.getRole().getRoleId()));
+//			CustomUser customUser = new CustomUser(
+//					domainUser.getLogin(),
+//					domainUser.getPassword(),
+//					(domainUser.getUsuarioActivo() == "1" ? true:false),
+//					(domainUser.getUsuarioCambiarClave() == "1"  ? true:false),
+//					true,
+//					true,
+//					getAuthorities(domainUser.getRole().getRoleId()));
 			
-			userRepository.getCustomUser(customUser, username);
+//			userRepository.getCustomUser(customUser, username);
 			
-			return new User(
+			return new CustomUser(
 					domainUser.getLogin(), 
 					domainUser.getPassword().toLowerCase(),
 					enabled,
 					accountNonExpired,
 					credentialsNonExpired,
 					accountNonLocked,
-					getAuthorities(domainUser.getRole().getRoleId())
+					getAuthorities(domainUser.getRole().getRoleId()),
+					domainUser.getId(),
+					userRepository.findClienteByUserId(domainUser.getId())
 					);
 			
 		} catch (Exception e) {

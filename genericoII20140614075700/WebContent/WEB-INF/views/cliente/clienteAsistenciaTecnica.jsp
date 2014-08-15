@@ -29,26 +29,25 @@
 					
 					
 					
-				<table width="569" border="1">
-  <tr>
-    <td colspan="2" align="center" scope="col"><strong class="boxtitle">ASISTENCIA TECNICA</strong></td>
-  </tr>
-  <tr>
-    <td ><strong>Titulo</strong></td>
-    <td ><form:input path="empleadoAsistenciaTecnicaTitulo" />&nbsp;</td>
-  </tr>
-  <tr>
-    <td ><strong>descripcion</strong></td>
-    <td ><form:input path="empleadoAsistenciaTecnicaDescripcion" />&nbsp;</td>
-  </tr>
-   <tr>
-    <td><input type="submit" value="Enviar"/></td>
-  </tr>
- 
-</table>
+				<table border="0">
+				  <tr>
+				    <td colspan="2" align="center" scope="col"><strong class="boxtitle">ASISTENCIA TECNICA</strong></td>
+				  </tr>
+				  <tr>
+				    <td ><strong>Titulo</strong></td>
+				    <td ><form:input path="empleadoAsistenciaTecnicaTitulo" />&nbsp;</td>
+				  </tr>
+				  <tr>
+				    <td ><strong>Descripci&oacute;n</strong></td>
+				    <td ><form:input path="empleadoAsistenciaTecnicaDescripcion" />&nbsp;</td>
+				  </tr>
+				   <tr>
+				    <td colspan="2" align="center"><input type="submit" value="Enviar"/></td>
+				  </tr>
+				 
+				</table>
 					
 	
-<input type="submit" value="Enviar"/>
           </div>
         </form:form>		   
       </div>

@@ -1,17 +1,21 @@
 package com.web.security;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.main.java.Cliente;
+
 public class CustomUser extends User implements UserDetails{
 	
 	private static final long serialVersionUID = 3668084416659011020L;
 	private Long userId;
-	private String user;
+	private String username;
 	private String fullName;
+	private String password;
 	private String sucursal;
 	private String subTipoSucursal;
 	private String tipoSucursal;
@@ -20,23 +24,65 @@ public class CustomUser extends User implements UserDetails{
 	private Long subTipoSucursalId;
 	private Long tipoSucursalId;
 	private String nivelAcceso;
-	private Integer clienteId;
+	private Long clienteId;
+	private Cliente cliente;
 	
-	public CustomUser(String username, String password, boolean enabled,
-			boolean accountNonExpired, boolean credentialsNonExpired,
-			boolean accountNonLocked,
-			Collection<? extends GrantedAuthority> authorities) {
-		super(username, password, enabled, accountNonExpired, credentialsNonExpired,
-				accountNonLocked, authorities);
+	public CustomUser(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired,
+			boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities)
+	{
+		super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+		this.username = username;
+        this.password = password;
+        
 	}
 
+	public CustomUser(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired,
+			boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities, Long userId, Cliente cliente)
+	{
+		super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+		this.username = username;
+        this.password = password;
+        this.userId = userId;
+        this.cliente = cliente;
+        
+	}
 	
-	public Integer getClienteId() {
+	
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public Long getClienteId() {
 		return clienteId;
 	}
 
 
-	public void setClienteId(Integer clienteId) {
+	public void setClienteId(Long clienteId) {
 		this.clienteId = clienteId;
 	}
 
@@ -57,14 +103,6 @@ public class CustomUser extends User implements UserDetails{
 	public String getUserIdAsString() {
 		if(userId != null) return userId.toString();
 		return "";
-	}
-
-	public String getUser() {
-		return user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
 	}
 
 	public void setUserId(Long userId) {

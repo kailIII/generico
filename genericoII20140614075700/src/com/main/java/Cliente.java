@@ -29,7 +29,7 @@ public class Cliente {
 	@Column(name = "cliente_id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IdGenerator")
     @SequenceGenerator(allocationSize = 1, name = "IdGenerator", sequenceName = "cliente_id_seq")
-	private Integer clienteId;
+	private Long clienteId;
 	@Column(name = "cliente_no_cuenta")
 	private String clienteNumeroDeCuenta;
 	
@@ -43,11 +43,11 @@ public class Cliente {
 	@JoinColumn(name = "persona_id")
 	private SgiPersona sgiPersona;
 
-	public Integer getClienteId() {
+	public Long getClienteId() {
 		return clienteId;
 	}
 
-	public void setClienteId(Integer clienteId) {
+	public void setClienteId(Long clienteId) {
 		this.clienteId = clienteId;
 	}
 
