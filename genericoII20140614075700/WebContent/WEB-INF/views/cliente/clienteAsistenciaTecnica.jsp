@@ -41,6 +41,19 @@
 				    <td ><strong>Descripci&oacute;n</strong></td>
 				    <td ><form:input path="empleadoAsistenciaTecnicaDescripcion" />&nbsp;</td>
 				  </tr>
+				  <tr>
+				    <td ><strong>telefono</strong></td>
+				    <td ><form:input path="empleadoAsistenciaTecnicaTelefono" />&nbsp;</td>
+				  </tr>
+				  <tr>
+				    <td ><strong>Direcci&oacute;n</strong></td>
+				    <td ><form:input path="empleadoAsistenciaTecnicaDireccion" />&nbsp;</td>
+				  </tr>
+				    <tr>
+				    <td ><strong>Email</strong></td>
+				    <td ><form:input path="empleadoAsistenciaTecnicaEmail" />&nbsp;</td>
+				  </tr>
+				  
 				   <tr>
 				    <td colspan="2" align="center"><input type="submit" value="Enviar"/></td>
 				  </tr>
