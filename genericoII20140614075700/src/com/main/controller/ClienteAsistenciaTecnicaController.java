@@ -49,23 +49,19 @@ public class ClienteAsistenciaTecnicaController {
 	@RequestMapping(value = "/nuevaAsistenciaTecnica", method=RequestMethod.POST)
 	public String crearAsistencia(@ModelAttribute("asistenciaTecnica") AsistenciaTecnica asistenciaTecnica, BindingResult result) {
 		try {
-//			GenericoUtil genericoUtil = new GenericoUtil();
-//					genericoUtil.getCtgSucursalIdFromAcegi();
-			Cliente cliente = new Cliente();
 			CustomUser customUser = GenericoUtil.getCustomUserFromAcegi();
-			cliente = customUser.getCliente();
-			asistenciaTecnica.setCliente(cliente);
-			asistenciaTecnica.setEmpleadoAsistenciaTecnicaDireccion("los laureles");
-			asistenciaTecnica.setEmpleadoAsistenciaTecnicaEmail("asdasd@me.com");
+			asistenciaTecnica.setCliente(customUser.getCliente());
 			asistenciaTecnica.setEmpleadoAsistenciaTecnicaEstado("1");
-			asistenciaTecnica.setEmpleadoAsistenciaTecnicaTelefono("243423423");
 			asistenciaTecnicaDAO.saveAsistenciaTecnica(asistenciaTecnica);
+
+			
 		} catch (AsiWebException e) {
 			e.printStackTrace();
 		}
 		return "cliente/clienteInicio";
 		
 	}
+	
 	
 	
 	
