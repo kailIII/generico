@@ -70,14 +70,14 @@ public class UsuarioRolController extends BaseController {
 		}
 	}
 
-	public ArrayList<HashMap<String, Integer>> getAllRolesByUser() throws AsiWebException{
+	public ArrayList<HashMap<String, Long>> getAllRolesByUser() throws AsiWebException{
 		List<Object[]> items = userDao.findAllUsuariosRoles();
-		HashMap<String, Integer> map = null;
-		ArrayList<HashMap<String, Integer>> lj = new ArrayList<HashMap<String, Integer>>();
+		HashMap<String, Long> map = null;
+		ArrayList<HashMap<String, Long>> lj = new ArrayList<HashMap<String, Long>>();
 		for (Object[] objects : items){
-			map = new HashMap<String, Integer>();
-			map.put("usrId", (Integer)objects[0]);
-			map.put("rolId", (Integer)objects[1]);
+			map = new HashMap<String, Long>();
+			map.put("usrId", (Long)objects[0]);
+			map.put("rolId", (Long)objects[1]);
 			lj.add(map);
 		}
 		return lj;
