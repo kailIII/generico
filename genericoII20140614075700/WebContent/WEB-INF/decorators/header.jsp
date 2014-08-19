@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="acegi" %>
+<acegi:authentication property="principal" var="sgdUsuarioAcegi" />
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <div style="display: none;">
 <div id="header">
@@ -12,7 +13,7 @@
 </div>
 <a class="ch clave" title="Cambiar Clave" href="" title="Cambio de Clave"></a>
 <a class="ch cerrar" title="Cerrar Sessi\u00F3n" href="<c:url value="/j_spring_security_logout" />" title="Cerrar Sesi&oacute;n"></a>
-<a class="ch inicio" title="Ir a Inicio" href="${contextPath}/home" title="Inicio"></a>
+<a class="ch inicio" title="Ir a Inicio" href="${contextPath}/administradorHome" title="Inicio"></a>
 <table cellpadding="0" cellspacing="0" style="float:right;margin-right: 20px;width: 450px;">
 <tr>
 <td class='tdTitleL'></td>
