@@ -88,7 +88,7 @@ import com.web.util.GenericoUtil;
 //						add(Projections.property("ctgTipoSucursal.ctgTipoSucursalId")).
 //						add(Projections.property("ctgTipoDocumento.ctgCatalogoId"))
 					));
-			criterias.add(Restrictions.ne("id", 0));
+			criterias.add(Restrictions.ne("id", 0L));
 			criterias.addOrder(Order.asc("login"));
 
 			return (List<Object[]>) findByCriteria(criterias);
@@ -199,10 +199,6 @@ import com.web.util.GenericoUtil;
 			criteria.createAlias("sgiPersona", "sgiPersona");
 			criteria.createAlias("sgiPersona.user", "user");
 			criteria.add(Restrictions.eq("user.id", userId));
-//			criteria.setProjection(
-//					Projections.projectionList().
-//					add(Projections.property("user.id"))
-//			);
 				List<Cliente> list = (List<Cliente>) findByCriteria(criteria);
 				if(!GenericoUtil.isEmptyList(list)){
 					return list.get(0);
