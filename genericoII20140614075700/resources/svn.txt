@@ -1,0 +1,37 @@
+los pasos que da el proveedor:
+
+https://www.digitalocean.com/community/tutorials/how-to-backup-postgresql-databases-on-an-ubuntu-vps
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-12-04
+
+--------------------------------------------------------------
+
+con este tutorial nos salio todo:
+
+http://www.lemursolution.com/node/83
+
+---------------------------------------------------------------
+con este tutorial salimos de la vi: (putty)
+sudo - vim http://www.bdat.net/shell/node146.html
+
+lista las BD en Postgres=psql -U postgres -l
+listar los roles= entrar a psql y ejecutar \du
+
+listar tablas: \td
+listar bases de datos:\list
+salir de la funcion especifica: q
+salir de la siguientefuncion:crtl + d
+salir del modo vi: scape + :q!
+----------------------------------------------------------------
+otra ayuda para hacer la configuracion.
+
+http://www.linuxhispano.net/2011/02/15/permitir-conexiones-entrantes-a-un-servidor-postgresql/
+107.170.6.141
+
+----------------------------------------------------------------
+
+crear usuario desde '0' a pata y ponerle los roles y permisos
+http://www.nanotutoriales.com/como-crear-un-usuario-y-asignarle-permisos-en-postgresql
+
+----------------------------------------------------------------
+reiniciar Postgres: sudo service postgresql restart

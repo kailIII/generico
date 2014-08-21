@@ -18,8 +18,14 @@
         
       </div>
       <div id="content">
-        <!-- insert the page content here -->
-<%--         <form:form method="post" action="persona/crearCliente" commandName="sgiPersona"> --%>
+		<!--insert the page content here -->
+		
+        <form:form method="post" action="persona/crearCliente" commandName="sgiPersona">
+        
+<%--         <form:form method="post" action="nuevaAsistenciaTecnica" commandName="asistenciaTecnica"> --%>
+        
+        
+        
           <div class="form_settings">
 					<div class="wrapper pad_bot1">
 						<div class="radio marg_right1">
@@ -29,6 +35,7 @@
 
 						</div><br>
 					</div>
+					
 <!-- 					<div class="wrapper"> -->
 <!-- 						Usuario -->
 <!-- 						<div class="bg"> -->
@@ -40,45 +47,68 @@
 <!-- 					</div><br> -->
 					
 					
+					<table border="0">
+				  <tr>
+				    <td colspan="2" align="center" scope="col"><strong class="boxtitle">REGISTRO</strong></td>
+				  </tr>
+				  <tr>
+				    <td ><strong>Primer normbre</strong></td>
+				    <td ><form:input path="PersonaPrimerNombre" id="PersonaPrimerNombre" />&nbsp;</td>
+
+				  </tr>
+				  <tr>
+				    <td ><strong>segundo normbre</strong></td>
+				    <td ><form:input path="PersonaSegundoNombre" id="PersonaSegundoNombre" />&nbsp;</td>
+
+				  </tr>
+				  <tr>
+				    <td ><strong>Primer apellido</strong></td>
+				    <td ><form:input path="PersonaPrimerApellido" id="PersonaPrimerApellido" />&nbsp;</td>
+				  </tr>
+				  <tr>
+				    <td ><strong>segundo apellido</strong></td>
+				    <td ><form:input path="PersonaSegundoApellido" id="PersonaSegundoApellido" />&nbsp;</td>
+				  </tr>
+				  <tr>
+				    <td ><strong>Direcci&oacute;n</strong></td>
+				    <td ><form:input path="personaDireccion" id="personaDireccion"/>&nbsp;</td>
+				  </tr>
+				    <tr>
+				    <td ><strong>Email</strong></td>
+				    <td ><form:input path="personaEmail" id="personaEmail"/>&nbsp;</td>
+				  </tr>
+				  
+				  <tr>
+				<td><strong>Departamento</strong></td>
+				<td><form:select path="ctgDepartamento" items="${busquedaDepto}"/></td>
+				</tr>
+				 <tr>
+				 
+				  <tr>
+				<td><strong>Municipio</strong></td>
+				<td><form:select path="ctgMunicipio" items="${busquedaMuni}"/></td>
+				</tr>
+				 <tr>
+				 
+				    <td ><strong>usuario</strong></td>
+				    <td ><form:input path="login" id="login"/>&nbsp;</td>
+				  </tr>
+				   <tr>
+				    <td ><strong>contras&ñacutea</strong></td>
+				    <td ><form:input path="password" id="password"/>&nbsp;</td>
+				  </tr>
+				  
+				   <tr>
+				    <td colspan="2" align="center"><input type="submit" value="Enviar" /></td>
+				  </tr>
+				  
+	
+				</table>
 					
-<!-- 					<div class="wrapper"> -->
-<!-- 						Primer Nombre -->
-<!-- 						<div class="bg"> -->
-<%-- 						<form:input path="sgiPersonaPrimerNombre" />  --%>
-<!-- 						</div> -->
-<!-- 					</div><br> -->
-<!-- 					<div class="wrapper"> -->
-<!-- 						Segundo Nombre -->
-<!-- 						<div class="bg"> -->
-<%-- 						<form:input path="sgiPersonaSegundoNombre"/></div> --%>
-<!-- 					</div><br> -->
-<!-- 					<div class="wrapper"> -->
-<!-- 						Primer Apellido -->
-<!-- 						<div class="bg"> -->
-<%-- 						<form:input path="sgiPersonaPrimerApellido"/></div> --%>
-<!-- 					</div><br> -->
-<!-- 					<div class="wrapper"> -->
-<!-- 						Segundo Apellido -->
-<!-- 						<div class="bg"> -->
-<%-- 						<form:input path="sgiPersonaSegundoApellido" /></div> --%>
-<!-- 					</div><br> -->
-<!-- 					<div class="wrapper"> -->
-<!-- 						Dui -->
-<!-- 						<div class="bg"> -->
-<%-- 						<form:input path="sgiPersonaDui"/></div> --%>
-<!-- 					</div><br> -->
-					<!--<div class="wrapper">
-						Direccion
-						<div class="bg"><input type="text" title="La direccion debe conetener unicamente digitos y letras" name="direccion" required placeholder="direccion" pattern="|^([a-zA-ZñÑáéíóúüç0-9]+\s*)+$"/></div>
-					</div>-->
-<!-- 					<div class="wrapper"> -->
-<!-- 						Correo Electronico -->
-<!-- 						<div class="bg"> -->
-<%-- 						<form:input path="sgiPersonaCorreoElectronico"/></div> --%>
-<!-- 					</div><br> -->
-            <input type="submit" value="Registro Cliente"/>
+				
+					
           </div>
-<%--         </form:form>		    --%>
+       </form:form>
       </div>
     <div id="site_content_bottom"></div>
     </div>
