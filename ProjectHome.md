@@ -1,0 +1,1 @@
+Compras en linea, administración de inventario,seguimiento de procesos de nuevas requisiciones
